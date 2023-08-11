@@ -1,0 +1,57 @@
+add_newline = false
+
+right_format = """\
+$kubernetes\
+$aws\
+$time\
+"""
+
+[directory]
+truncation_length = 1
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+truncation_length = 25
+symbol = ' '
+
+[aws]
+format = '( [$symbol($profile)(\[$duration\])]($style))'
+expiration_symbol = ' '
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+format = ' [$symbol$context]($style)'
+symbol = '󱃾 '
+disabled = false
+
+[helm]
+symbol = '📦 '
+
+[terraform]
+format = ' [$symbol($version)]($style)'
+symbol = '󱁢 '
+disabled = true
+
+[time]
+format = ' [$time]($style)'
+disabled = false
+
+[package]
+disabled = true
+
+[dart]
+disabled = true
+
+[nodejs]
+format = ' [$symbol($version)]($style)'
+disabled = true
+
+[cmd_duration]
+disabled = true
+min_time = 10_000 # ms
+
+[line_break]
+disabled = true
+

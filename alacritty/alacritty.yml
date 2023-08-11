@@ -1,0 +1,29 @@
+import:
+  - ~/.config/alacritty/themes/themes/catppuccin.yaml
+
+env:
+  TERM: xterm-256color
+
+live_config_reload: true
+
+env:
+  TERM: xterm-256color
+
+window:
+  opacity: 1.0
+  padding:
+    x: 5
+    y: 15 
+  decorations: buttonless 
+
+font:
+  normal:
+    family: "SauceCodePro Nerd Font"
+    style: Regular
+  size: 17.0
+
+key_bindings:
+  - { key: N,      mods: Command,         action: SpawnNewInstance }
+  - { key: Q,      mods: Command,         action: Quit             }
+  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+
