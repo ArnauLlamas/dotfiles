@@ -1,15 +1,4 @@
-alias ll='exa -l'
-alias la='exa -la'
-alias ls=exa
-alias vi='nvim'
-alias vim='nvim'
-alias python='python3'
-alias c='clear'
-alias d='docker'
-alias dc='docker-compose'
-alias s='source ~/.zshrc'
-alias vzshrc='nvim ~/.zshrc'
-
+# Functions
 function note() {
   F=$HOME/Documents/Obsidian\ Vault/Drafts.md
   echo "date: $(date)" >> $F
@@ -18,24 +7,15 @@ function note() {
   echo "---" >> $F
 }
 
-export PATH=$PATH:$HOME/bin:/opt/homebrew/bin
-
-# Creds sourcing
-for file in $(ls ~/.creds/*.keys);
-do
-  source $file
-done
-
 # KubeCTL auto completion
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-alias k='kubectl'
 
 # Helm auto completion
 [[ $commands[helm] ]] && source <(helm completion zsh)
 
 # K8s util functions
 function pods-per-node() {
-  k get po -A --output yaml | yq '.items[].spec.nodeName' | sort | uniq -c | sort -nr
+  kubectl get po -A --output yaml | yq '.items[].spec.nodeName' | sort | uniq -c | sort -nr
 }
 
 function pods-in-node() {
@@ -45,10 +25,9 @@ function pods-in-node() {
   then
     echo "Specify a node"
   else
-    k get po -A -o wide | grep $NODE
+    kubectl get po -A -o wide | grep $NODE
   fi
 }
-alias pin='pods-in-node'
 
 function top-pods-cpu() {
   NODE=$1
@@ -58,7 +37,7 @@ function top-pods-cpu() {
     echo "Specify a node"
 
   else
-    k get po -A -o wide | grep ${NODE} | \
+    kubectl get po -A -o wide | grep ${NODE} | \
     awk '{print $1, $2}' | \
     while read ns po; do k top pods --no-headers -n $ns $po; done | \
     sort --key 2 -nr | column -t
@@ -73,7 +52,7 @@ function top-pods-ram() {
     echo "Specify a node"
 
   else
-    k get po -A -o wide | grep ${NODE} | \
+    kubectl get po -A -o wide | grep ${NODE} | \
     awk '{print $1, $2}' | \
     while read ns po; do kubectl top pods --no-headers -n $ns $po; done | \
     sort --key 3 -nr | column -t
@@ -90,10 +69,6 @@ function t() {
   fi
 }
 
-alias ti="t init"
-alias tri="t run-all init"
-alias tp="t plan"
-
 # General utilities
 function genpass() {
   BASE=$1
@@ -109,3 +84,29 @@ function genpass() {
 function puller() {
   for i in $(ls); do cd $i && git pull && cd -; done
 }
+
+# Aliases
+alias ll='exa -l'
+alias la='exa -la'
+alias ls='exa'
+alias vi='nvim'
+alias vim='nvim'
+alias python='python3'
+alias c='clear'
+alias d='docker'
+alias dc='docker-compose'
+
+alias s='source ~/.zshrc'
+alias vzshrc='nvim ~/.zshrc'
+alias valias='nvim $DOTFILES/zsh/aliases.zsh'
+
+# k8s aliases
+alias k='kubectl'
+alias pin='pods-in-node'
+
+# Terra aliases
+alias ti="t init"
+alias tp="t plan"
+alias tri="t run-all init"
+alias trp="t run-all plan"
+

@@ -15,7 +15,7 @@ truncation_length = 25
 symbol = ' '
 
 [aws]
-format = '( [$symbol($profile)(\[$duration\])]($style))'
+format = '( [($profile)(\[$duration\])]($style))'
 expiration_symbol = ' '
 
 [docker_context]
@@ -36,6 +36,7 @@ disabled = true
 
 [time]
 format = ' [$time]($style)'
+style = 'bold green'
 disabled = false
 
 [package]
