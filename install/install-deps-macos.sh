@@ -7,6 +7,7 @@ echo ""
 brew install --cask font-sauce-code-pro-nerd-font
 brew install --cask rectangle
 brew install obsidian
+brew install gomplate
 
 brew install docker
 brew install docker-compose

@@ -32,6 +32,9 @@ do
   source_if_exists $file
 done
 
+# Repos folder
+REPOS=$HOME/Documents/repos
+
 #Star Ship
 eval "$(starship init zsh)"
 

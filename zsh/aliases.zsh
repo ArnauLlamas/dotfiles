@@ -95,6 +95,8 @@ alias python='python3'
 alias c='clear'
 alias d='docker'
 alias dc='docker-compose'
+alias docker-clean='docker rmi -f $(docker images -f "dangling=true" -q)'
+alias dclean='docker-clean'
 
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
