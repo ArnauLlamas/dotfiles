@@ -14,19 +14,22 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 
 # ASDF Sourcing
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
-
+if [[ "$(uname)" == "Linux" ]]; then
+  source $HOME/.asdf/asdf.sh
+elif [[ "$(uname)" == "Darwin" ]]; then
+  source /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
 # ohmyzsh plugins
-plugins=(git aws asdf terraform brew)
+plugins=(git aws asdf terraform brew kind)
 
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:$HOME/bin:/opt/homebrew/bin
 
 # Creds sourcing
-for file in $(ls $HOME/.creds/*.keys)
+for file in $(ls $HOME/.creds/)
 do
-  source $file
+  source_if_exists $file
 done
 
 #Star Ship

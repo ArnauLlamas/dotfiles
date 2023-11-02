@@ -2,8 +2,10 @@ gum 0.10.0
 terraform 1.4.6
 tflint 0.46.0
 kubectl 1.24.0
+kind 0.20.0
 helm 3.7.0
-nodejs 18.17.0
+nodejs 18.17.1
 yq 4.34.2
 github-cli 2.32.0
 act 0.2.49
+rust latest 1.73.0
