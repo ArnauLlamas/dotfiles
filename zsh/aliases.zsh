@@ -102,6 +102,11 @@ alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
 alias valias='nvim $DOTFILES/zsh/aliases.zsh'
 
+# tmux aliases
+alias tms='tmux source ~/.tmux.conf'
+alias tm='tmux new-session -A -D -s'
+alias tmm='tm main'
+
 # k8s aliases
 alias k='kubectl'
 alias pin='pods-in-node'

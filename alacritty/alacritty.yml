@@ -10,7 +10,7 @@ window:
   opacity: 1.0
   padding:
     x: 5
-    y: 15 
+    y: 5
   decorations: Full
 
 font:
