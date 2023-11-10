@@ -22,10 +22,12 @@ brew install neofetch
 
 brew install exa
 brew install bat
+brew install ripgrep
 brew install vim
 brew install neovim
 
 brew install terraform
+brew install go
 
 echo "Done!"
 echo ""

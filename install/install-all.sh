@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# Creates links through links.prop files
-./install/bootstrap.sh
-
 # Install brew
 zsh brew/install.sh
 
@@ -13,5 +10,8 @@ zsh install/install-deps-macos.sh
 zsh oh-my-zsh/install.sh
 zsh asdf/install.sh
 zsh alacritty/install.sh
+zsh tmux/install.sh
 zsh NvChad/install.sh
 
+# Creates links through links.prop files
+./install/bootstrap.sh
