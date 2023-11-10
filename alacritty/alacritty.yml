@@ -11,7 +11,7 @@ window:
   padding:
     x: 5
     y: 5
-  decorations: Full
+  decorations: full
 
 font:
   normal:
@@ -20,7 +20,5 @@ font:
   size: 14.0
 
 key_bindings:
-  - { key: N,      mods: Control,         action: SpawnNewInstance }
-  - { key: Q,      mods: Control,         action: Quit             }
-  - { key: F,      mods: Control, action: ToggleFullscreen }
+  - { key: Q, mods: Control, action: Quit }
 
