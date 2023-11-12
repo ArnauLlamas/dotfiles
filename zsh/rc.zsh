@@ -20,12 +20,12 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   source /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 # ohmyzsh plugins
-plugins=(git aws asdf terraform brew kind)
+plugins=(git aws asdf terraform brew kind golang)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:$HOME/bin:/opt/homebrew/bin
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin
+export GOROOT=/usr/local/go
 
 # Creds sourcing
 for file in $(ls $HOME/.creds/)
