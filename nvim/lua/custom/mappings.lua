@@ -14,6 +14,10 @@ M.dap = {
         sidebar.open();
       end,
       "Open debugging sidebar"
+    },
+    ["<leader>ds"] = {
+      "<cmd> lua vim.diagnostic.open_float(0, {scope=\"line\"})<CR>",
+      "Show whole diagnostics line"
     }
   }
 }
