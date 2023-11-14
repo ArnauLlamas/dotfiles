@@ -25,7 +25,8 @@ plugins=(git aws asdf terraform brew kind golang)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin
-export GOROOT=/usr/local/go
+export GOROOT="$(go env GOROOT)"
+export GOPATH="$(go env GOPATH)"
 
 # Creds sourcing
 for file in $(ls $HOME/.creds/)
