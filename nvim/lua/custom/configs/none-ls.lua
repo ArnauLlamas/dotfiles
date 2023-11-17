@@ -11,6 +11,9 @@ local opts = {
     none_ls.builtins.formatting.gofumpt,
     none_ls.builtins.formatting.goimports_reviser,
     none_ls.builtins.formatting.golines,
+    -- Terraform
+    none_ls.builtins.formatting.terraform_fmt,
+    none_ls.builtins.diagnostics.terraform_validate,
   },
   on_attach = function (client, bufnr)
     if client.supports_method("textDocument/formatting") then
