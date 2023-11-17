@@ -58,7 +58,7 @@ local plugins = {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft = {"python", "go"},
+    ft = {"python", "go", "terraform", "hcl"},
     opts = function ()
       return require("custom.configs.none-ls")
     end
@@ -98,6 +98,17 @@ local plugins = {
         "yaml-language-server",
       },
     },
+  },
+  -- If any day this PR is merged delete this custom
+  -- https://github.com/numToStr/Comment.nvim/pull/398
+  {
+    "numToStr/Comment.nvim",
+    config = function ()
+      local ft = require('Comment.ft')
+      ft.hcl = { '#%s', '/*%s*/' }
+
+      require('Comment').setup()
+    end
   }
 }
 return plugins
