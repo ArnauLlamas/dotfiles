@@ -4,48 +4,38 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
-lspconfig.terraformls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"terraform", "terraform-vars", "hcl"},
-  root_dir = util.root_pattern(".terraform", "main.tf", ".git")
-})
+local basic_servers = {
+  "html",
+  "cssls",
+  "yamlls",
+  "bashls",
+  "pyright",
+  "terraformls",
+  "terraform_lsp",
+  "tflint"
+}
 
-lspconfig.tflint.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"terraform", "terraform-vars", "hcl"}
-})
+-- Loop through "basic_servers" and just do a basic setup with on_attach and
+-- capabilities attributes
+for _, lsp in ipairs(basic_servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
 
 lspconfig.helm_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"helm","yaml"},
+  filetypes = { "helm", "yaml" },
   root_dir = util.root_pattern("Chart.yaml", "templates", ".git")
-})
-
-lspconfig.yamlls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
-})
-
-lspconfig.bashls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"shell", "sh", "bash"}
-})
-
-lspconfig.yamlls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"yaml"}
 })
 
 lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls"},
-  filetypes = {"go", "gomod", "gowork", "gotmpl"},
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
@@ -57,10 +47,4 @@ lspconfig.gopls.setup({
       gofumpt = true
     },
   },
-})
-
-lspconfig.pyright.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"python"}
 })
