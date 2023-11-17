@@ -8,51 +8,265 @@ $time\
 
 [directory]
 truncation_length = 1
+disabled = false
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
 truncation_length = 25
 symbol = ' '
+disabled = false
+
+[git_state]
+disabled = false
+
+[git_status]
+disabled = false
 
 [aws]
 format = '( [($profile)(\[$duration\])]($style))'
 expiration_symbol = ' '
-
-[docker_context]
-disabled = true
+disabled = false
 
 [kubernetes]
 format = ' [$symbol$context]($style)'
 symbol = '󱃾 '
 disabled = false
 
-[helm]
-symbol = '📦 '
+[golang]
+format = ' [$symbol]($style)'
+disabled = false
 
-[terraform]
-format = ' [$symbol($version)]($style)'
-symbol = '󱁢 '
-disabled = true
+[lua]
+format = ' [$symbol]($style)'
+disabled = false
 
 [time]
 format = ' [$time]($style)'
 style = 'bold green'
 disabled = false
 
-[package]
+[jobs]
+disabled = false
+
+
+## Disabled explicitly
+[azure]
+disabled = true
+
+[battery]
+disabled = true
+
+[buf]
+disabled = true
+
+[bun]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[cmd_duration]
+# min_time = 10_000 # ms
+disabled = true
+
+[conda]
+disabled = true
+
+[container]
+disabled = true
+
+[crystal]
+disabled = true
+
+[daml]
 disabled = true
 
 [dart]
 disabled = true
 
-[nodejs]
-format = ' [$symbol($version)]($style)'
+[deno]
 disabled = true
 
-[cmd_duration]
+[docker_context]
 disabled = true
-min_time = 10_000 # ms
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[env_var]
+disabled = true
+
+[erlang]
+disabled = true
+
+[fennel]
+disabled = true
+
+[fossil_branch]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[guix_shell]
+disabled = true
+
+[gradle]
+disabled = true
+
+[haskell]
+disabled = true
+
+[haxe]
+disabled = true
+
+[helm]
+# symbol = '📦 '
+disabled = true
+
+[hostname]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
 
 [line_break]
 disabled = true
 
+[localip]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[meson]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+# format = ' [$symbol($version)]($style)'
+disabled = true
+
+[ocaml]
+disabled = true
+
+[opa]
+disabled = true
+
+[openstack]
+disabled = true
+
+[os]
+disabled = true
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pijul_channel]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[rlang]
+disabled = true
+
+[raku]
+disabled = true
+
+[red]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[shell]
+disabled = true
+
+[shlvl]
+disabled = true
+
+[singularity]
+disabled = true
+
+[solidity]
+disabled = true
+
+[spack]
+disabled = true
+
+[status]
+disabled = true
+
+[sudo]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+# format = ' [$symbol($version)]($style)'
+# symbol = '󱁢 '
+disabled = true
+
+[username]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[zig]
+disabled = true
