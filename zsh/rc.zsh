@@ -20,7 +20,7 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   source /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 # ohmyzsh plugins
-plugins=(git aws asdf terraform brew kind golang)
+plugins=(gitfast aws asdf terraform brew kind golang)
 
 source $ZSH/oh-my-zsh.sh
 
