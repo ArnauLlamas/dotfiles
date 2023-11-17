@@ -21,4 +21,3 @@ font:
 
 key_bindings:
   - { key: Q, mods: Control, action: Quit }
-
