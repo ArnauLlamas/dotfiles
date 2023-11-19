@@ -33,11 +33,11 @@ symbol = '󱃾 '
 disabled = false
 
 [golang]
-format = ' [$symbol]($style)'
+format = '[$symbol]($style)'
 disabled = false
 
 [lua]
-format = ' [$symbol]($style)'
+format = '[$symbol]($style)'
 disabled = false
 
 [time]
