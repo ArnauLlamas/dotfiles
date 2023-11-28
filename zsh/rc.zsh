@@ -27,6 +27,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin
 export GOROOT="$(go env GOROOT)"
 export GOPATH="$(go env GOPATH)"
+export TERM="tmux-256color"
 
 # Creds sourcing
 for file in $(ls $HOME/.creds/)
