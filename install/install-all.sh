@@ -11,7 +11,6 @@ zsh oh-my-zsh/install.sh
 zsh asdf/install.sh
 zsh alacritty/install.sh
 zsh tmux/install.sh
-zsh NvChad/install.sh
 
 # Creates links through links.prop files
 ./install/bootstrap.sh
