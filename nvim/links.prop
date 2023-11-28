@@ -1,1 +1,1 @@
-$DOTFILES/nvim/lua/custom/=$HOME/.config/nvim/lua/custom
+$DOTFILES/nvim/nvim-conf/=$HOME/.config/nvim

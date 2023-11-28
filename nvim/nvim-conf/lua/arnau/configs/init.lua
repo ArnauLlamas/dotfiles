@@ -1,0 +1,1 @@
+require("arnau.configs.mason")
