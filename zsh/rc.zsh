@@ -24,7 +24,7 @@ plugins=(gitfast aws asdf terraform brew kind golang)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin
+export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin
 export GOROOT="$(go env GOROOT)"
 export GOPATH="$(go env GOPATH)"
 export TERM="tmux-256color"
