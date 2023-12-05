@@ -61,3 +61,16 @@ vim.opt.splitright = true
 
 -- Do not show indent lines on dashboard
 vim.g.indent_blankline_filetype_exclude = { "dashboard" }
+
+-- HCLFMT on save
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = vim.api.nvim_create_augroup("terragrunt-hclfmt", { clear = true }),
+	callback = function()
+		if not FORMAT_IS_ENABLED then
+			return
+		end
+		if vim.bo.filetype == "hcl" then
+			vim.cmd("silent !sh terragrunt hclfmt --terragrunt-hclfmt-file %")
+		end
+	end,
+})

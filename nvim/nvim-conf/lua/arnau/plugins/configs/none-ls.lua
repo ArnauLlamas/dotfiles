@@ -11,7 +11,13 @@ local get_augroup = function(client)
 
 	return _augroups[client.id]
 end
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+FORMAT_IS_ENABLED = true
+vim.api.nvim_create_user_command("FormattingToggle", function()
+	FORMAT_IS_ENABLED = not FORMAT_IS_ENABLED
+	print("Setting autoformatting to: " .. tostring(FORMAT_IS_ENABLED))
+end, {})
+
 local none_ls = require("null-ls")
 
 local opts = {
@@ -26,7 +32,6 @@ local opts = {
 		none_ls.builtins.formatting.golines,
 		-- Terraform
 		none_ls.builtins.formatting.terraform_fmt,
-		none_ls.builtins.formatting.hclfmt,
 		none_ls.builtins.diagnostics.terraform_validate,
 		none_ls.builtins.diagnostics.tfsec,
 		none_ls.builtins.diagnostics.trivy,
@@ -50,6 +55,9 @@ local opts = {
 				group = get_augroup(client),
 				buffer = bufnr,
 				callback = function()
+					if not FORMAT_IS_ENABLED then
+						return
+					end
 					--  Run the formatting command for the tool that has just attached.
 					vim.lsp.buf.format({ bufnr = bufnr })
 				end,
