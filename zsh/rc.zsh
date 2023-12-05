@@ -36,7 +36,8 @@ do
 done
 
 # Repos folder
-REPOS=$HOME/Documents/repos
+export REPOS=$HOME/Documents/repos
+export PERSONAL=$HOME/Documents/personal
 
 #Star Ship
 eval "$(starship init zsh)"
