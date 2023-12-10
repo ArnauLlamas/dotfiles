@@ -1,13 +1,13 @@
 require("catppuccin").setup({
-	transparent_background = true,
+	transparent_background = false,
 	styles = {
 		comments = {},
 	},
 	integrations = {
-		telescope = {
-			enabled = true,
-			style = "nvchad",
-		},
+		-- telescope = {
+		-- 	enabled = true,
+		-- 	style = "nvchad",
+		-- },
 		mason = true,
 		which_key = true,
 		cmp = true,

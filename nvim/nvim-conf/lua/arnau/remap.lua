@@ -38,7 +38,8 @@ vim.keymap.set("n", "<leader>n", "<cmd>bn<CR>", { desc = "Buffer [N]ext" })
 vim.keymap.set("n", "<leader>p", "<cmd>bp<CR>", { desc = "Buffer [P]revious" })
 vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Buffer Delete" })
 vim.keymap.set("n", "<Tab>", "<cmd>wincmd w<CR>", { desc = "Move to next buffer" })
-vim.keymap.set("n", "<leader>vs", "<cmd>vs<CR>", { desc = "New [V]ertical [S]plit" })
+vim.keymap.set("n", "<leader>sv", "<cmd>vertical split<CR>", { desc = "[S]plit [V]ertical" })
+vim.keymap.set("n", "<leader>sh", "<cmd>horizontal split<CR>", { desc = "[S]plit [H]orizontal" })
 vim.keymap.set("n", "<leader>mx", "<cmd>MaximizerToggle<CR>", { desc = "[M]a[x]imize current buffer" })
 
 -- Markdown Preview

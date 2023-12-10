@@ -74,3 +74,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		end
 	end,
 })
+
+-- Toggle transparent background
+vim.api.nvim_create_user_command("BackgroundToggle", function()
+	local cat = require("catppuccin")
+	cat.options.transparent_background = not cat.options.transparent_background
+	cat.compile()
+	vim.cmd.colorscheme(vim.g.colors_name)
+end, {})
+vim.keymap.set("n", "<leader>tt", "<cmd>BackgroundToggle<CR>", { desc = "Background [T]oggle [T]ransparency" })

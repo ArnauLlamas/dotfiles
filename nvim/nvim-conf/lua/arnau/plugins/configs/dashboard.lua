@@ -23,19 +23,19 @@ conf.center = {
 	{
 		icon = "󰈞  ",
 		desc = "Find  File                              ",
-		action = "Leaderf file --popup",
+		action = "Telescope find_files",
 		key = "SPC f f",
 	},
 	{
 		icon = "󰈢  ",
 		desc = "Recently opened files                   ",
-		action = "Leaderf mru --popup",
+		action = "Telescope oldfiles",
 		key = "SPC f r",
 	},
 	{
 		icon = "󰈬  ",
 		desc = "Project grep                            ",
-		action = "Leaderf rg --popup",
+		action = "Telescope live_grep",
 		key = "SPC f g",
 	},
 	{

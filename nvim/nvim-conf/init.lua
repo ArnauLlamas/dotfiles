@@ -28,7 +28,6 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require("lazy").setup({
   -- NOTE: First, some plugins that don't require any configuration
-
   -- Git related plugins
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
@@ -37,7 +36,7 @@ require("lazy").setup({
   "tpope/vim-sleuth",
 
   -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
+  -- The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
@@ -48,10 +47,21 @@ require("lazy").setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { "j-hui/fidget.nvim", opts = {} },
+      {
+        "j-hui/fidget.nvim",
+        config = function()
+          require("fidget").setup({
+            notification = {
+              window = {
+                winblend = 0,
+              },
+            },
+          })
+        end,
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
-      "folke/neodev.nvim",
+      { "folke/neodev.nvim", opts = {} },
     },
   },
 
@@ -94,16 +104,6 @@ require("lazy").setup({
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
     opts = require("arnau.plugins.configs.gitsigns"),
-  },
-
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      return require("arnau.plugins.configs.catppuccin")
-    end,
   },
 
   {
@@ -172,7 +172,15 @@ require("lazy").setup({
     },
     config = function()
       require("telescope").setup({
+        -- [[ Configure Telescope ]]
+        -- See `:help telescope` and `:help telescope.setup()`
         defaults = {
+          mappings = {
+            i = {
+              ["<C-u>"] = false,
+              ["<C-d>"] = false,
+            },
+          },
           sorting_strategy = "ascending",
           layout_strategy = "horizontal",
           layout_config = {
@@ -230,19 +238,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
   group = highlight_group,
   pattern = "*",
-})
-
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require("telescope").setup({
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-u>"] = false,
-        ["<C-d>"] = false,
-      },
-    },
-  },
 })
 
 -- Enable telescope fzf native, if installed
@@ -448,7 +443,7 @@ require("which-key").register({
   ["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
   ["<leader>h"] = { name = "More git", _ = "which_key_ignore" },
   ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-  ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+  ["<leader>f"] = { name = "[F]ind", _ = "which_key_ignore" },
   ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
 })
 
@@ -508,9 +503,6 @@ local servers = {
     },
   },
 }
-
--- Setup neovim lua configuration
-require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
