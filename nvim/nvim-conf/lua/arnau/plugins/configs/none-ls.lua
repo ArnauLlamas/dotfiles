@@ -30,6 +30,9 @@ local opts = {
 		none_ls.builtins.formatting.gofumpt,
 		none_ls.builtins.formatting.goimports_reviser,
 		none_ls.builtins.formatting.golines,
+		none_ls.builtins.code_actions.gomodifytags,
+		none_ls.builtins.code_actions.impl,
+		-- none_ls.builtins.code_actions.iferr,
 		-- Terraform
 		none_ls.builtins.formatting.terraform_fmt,
 		none_ls.builtins.diagnostics.terraform_validate,
@@ -41,6 +44,8 @@ local opts = {
 		none_ls.builtins.diagnostics.actionlint,
 		none_ls.builtins.formatting.yamlfix,
 		none_ls.builtins.diagnostics.yamllint,
+		none_ls.builtins.formatting.prettier,
+		none_ls.builtins.formatting.rustywind, -- TailwindCSS
 	},
 	on_attach = function(client, bufnr)
 		-- Only attach to clients that support document formatting

@@ -494,6 +494,15 @@ local servers = {
     filetypes = { "terraform", "terraform-vars" },
   },
 
+  tsserver = {
+    init_options = {
+      preferences = {
+        disableSuggestions = true,
+      },
+    },
+  },
+  volar = {},
+
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },

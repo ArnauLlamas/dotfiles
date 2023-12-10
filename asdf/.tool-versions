@@ -5,7 +5,7 @@ tflint latest 0.46.0
 kubectl latest 1.24.0
 kind latest 0.20.0
 helm latest 3.7.0
-nodejs 18.17.1
+nodejs latest 20.10.0
 yq latest 4.34.2
 github-cli latest 2.32.0
 act latest 0.2.49

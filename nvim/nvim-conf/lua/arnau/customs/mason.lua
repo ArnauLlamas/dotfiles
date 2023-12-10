@@ -13,6 +13,8 @@ local options = {
 		"golines",
 		"gomodifytags",
 		"delve",
+		"iferr",
+		"impl",
 		-- Others
 		"hadolint",
 		"shfmt",
@@ -21,6 +23,8 @@ local options = {
 		"actionlint",
 		"yamllint",
 		"yamlfix",
+		"prettier",
+		"rustywind",
 	},
 	max_concurrent_installers = 10,
 }
