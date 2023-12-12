@@ -35,7 +35,7 @@ local opts = {
 		-- none_ls.builtins.code_actions.iferr,
 		-- Terraform
 		none_ls.builtins.formatting.terraform_fmt,
-		none_ls.builtins.diagnostics.terraform_validate,
+		-- none_ls.builtins.diagnostics.terraform_validate,
 		none_ls.builtins.diagnostics.tfsec,
 		none_ls.builtins.diagnostics.trivy,
 		-- Others
@@ -43,8 +43,24 @@ local opts = {
 		none_ls.builtins.diagnostics.hadolint,
 		none_ls.builtins.diagnostics.actionlint,
 		none_ls.builtins.formatting.yamlfix,
-		none_ls.builtins.diagnostics.yamllint,
-		none_ls.builtins.formatting.prettier,
+		-- none_ls.builtins.diagnostics.yamllint,
+		none_ls.builtins.formatting.prettier.with({
+			-- Removing vue json yaml and markdown filetypes
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"css",
+				"scss",
+				"less",
+				"html",
+				"jsonc",
+				"markdown.mdx",
+				"graphql",
+				"handlebars",
+			},
+		}),
 		none_ls.builtins.formatting.rustywind, -- TailwindCSS
 	},
 	on_attach = function(client, bufnr)
