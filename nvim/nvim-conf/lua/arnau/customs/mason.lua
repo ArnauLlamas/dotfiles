@@ -22,7 +22,7 @@ local options = {
 		"trivy",
 		"actionlint",
 		"yamllint",
-		"yamlfix",
+		"yamlfmt",
 		"prettier",
 		"rustywind",
 	},
