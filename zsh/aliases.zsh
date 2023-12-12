@@ -86,9 +86,9 @@ function puller() {
 }
 
 # Aliases
-alias ll='exa -l'
-alias la='exa -la'
-alias ls='exa'
+alias ll='eza -l'
+alias la='eza -la'
+alias ls='eza'
 alias vi='nvim'
 alias vim='nvim'
 alias python='python3'
@@ -97,6 +97,9 @@ alias d='docker'
 alias dc='docker-compose'
 alias docker-clean='docker rmi -f $(docker images -f "dangling=true" -q)'
 alias dclean='docker-clean'
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias sed='gsed'
+fi
 
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'

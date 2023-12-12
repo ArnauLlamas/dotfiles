@@ -1,23 +1,18 @@
-import:
-  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
-
+---
+import: [~/.config/alacritty/catppuccin/catppuccin-mocha.yml]
 live_config_reload: true
-
 env:
-  TERM: xterm-256color
-
+  TERM: screen-256color
 window:
-  opacity: 0.95
+  opacity: 1
   padding:
     x: 5
     y: 5
   decorations: full
-
 font:
   normal:
-    family: "SauceCodePro Nerd Font"
+    family: SauceCodePro Nerd Font
     style: Regular
   size: 19.0
-
 key_bindings:
   - { key: Q, mods: Control, action: Quit }

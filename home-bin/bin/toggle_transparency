@@ -15,5 +15,10 @@ case $opacity in
 esac
 
 ## Replace opacity value in alacritty.yml
-sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
+if [[ "$(uname)" == "Darwin" ]]; then
+  gsed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
     $DOTFILES/alacritty/alacritty.yml
+else
+  sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
+    $DOTFILES/alacritty/alacritty.yml
+fi

@@ -20,11 +20,12 @@ brew install wget
 brew install git
 brew install neofetch
 
-brew install exa
+brew install eza
 brew install bat
 brew install ripgrep
 brew install vim
 brew install neovim
+brew install gsed
 
 brew install terraform
 brew install go
