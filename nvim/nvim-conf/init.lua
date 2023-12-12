@@ -42,7 +42,12 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      "williamboman/mason.nvim",
+      {
+        "williamboman/mason.nvim",
+        config = function()
+          return require("arnau.plugins.configs.mason")
+        end,
+      },
       "williamboman/mason-lspconfig.nvim",
 
       -- Useful status updates for LSP
@@ -431,7 +436,7 @@ local on_attach = function(_, bufnr)
   end, "[W]orkspace [L]ist Folders")
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+  vim.api.nvim_buf_create_user_command(bufnr, "LspFormat", function(_)
     vim.lsp.buf.format()
   end, { desc = "Format current buffer with LSP" })
 end

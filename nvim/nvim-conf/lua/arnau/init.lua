@@ -1,5 +1,3 @@
-require("arnau.customs")
-
 require("arnau.remap")
 
 -- [[ Setting options ]]

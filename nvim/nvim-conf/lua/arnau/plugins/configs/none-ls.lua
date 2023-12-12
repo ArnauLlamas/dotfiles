@@ -44,6 +44,7 @@ local opts = {
 		none_ls.builtins.diagnostics.actionlint,
 		none_ls.builtins.formatting.yamlfmt,
 		none_ls.builtins.diagnostics.yamllint,
+		none_ls.builtins.formatting.shfmt,
 		none_ls.builtins.formatting.prettier.with({
 			-- Removing vue json yaml and markdown filetypes
 			filetypes = {

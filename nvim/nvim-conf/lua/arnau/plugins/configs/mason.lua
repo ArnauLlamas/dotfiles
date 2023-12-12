@@ -1,4 +1,3 @@
--- This file holds utility tools, for LSPs check init.lua at root directory
 local mason = require("mason")
 local options = {
 	ensure_installed = { -- not an option from mason.nvim
@@ -23,6 +22,7 @@ local options = {
 		"actionlint",
 		"yamllint",
 		"yamlfmt",
+		"shfmt",
 		"prettier",
 		"rustywind",
 	},
