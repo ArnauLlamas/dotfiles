@@ -9,6 +9,11 @@ require("catppuccin").setup({
 		treesitter_context = true,
 		gitsigns = true,
 		fidget = true,
+		indent_blankline = {
+			enabled = true,
+			scope_color = "lavender",
+			colored_indent_levels = false,
+		},
 		lsp_trouble = true,
 	},
 })
