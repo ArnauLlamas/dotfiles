@@ -7,6 +7,7 @@ return {
 					tf = "terraform",
 					tfvars = "terraform",
 					tfstate = "json",
+					sh = "bash",
 				},
 			},
 		})
