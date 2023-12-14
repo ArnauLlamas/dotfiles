@@ -39,6 +39,7 @@ local opts = {
 		none_ls.builtins.diagnostics.tfsec,
 		none_ls.builtins.diagnostics.trivy,
 		-- Others
+		none_ls.builtins.code_actions.shellcheck,
 		none_ls.builtins.formatting.stylua,
 		none_ls.builtins.diagnostics.hadolint,
 		none_ls.builtins.diagnostics.actionlint,
