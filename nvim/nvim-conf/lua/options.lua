@@ -1,7 +1,7 @@
-require("arnau.remap")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- [[ Setting options ]]
--- See `:help vim.o`
+require("remap")
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -15,8 +15,6 @@ vim.opt.relativenumber = true
 vim.o.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 vim.o.clipboard = "unnamedplus"
 
 -- Enable break indent
@@ -81,3 +79,13 @@ vim.api.nvim_create_user_command("BackgroundToggle", function()
 	vim.cmd.colorscheme(vim.g.colors_name)
 end, {})
 vim.keymap.set("n", "<leader>tt", "<cmd>BackgroundToggle<CR>", { desc = "Background [T]oggle [T]ransparency" })
+
+-- [[ Highlight on yank ]]
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
+})

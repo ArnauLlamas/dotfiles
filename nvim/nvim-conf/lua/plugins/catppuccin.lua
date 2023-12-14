@@ -4,6 +4,6 @@ return {
 	name = "catppuccin",
 	priority = 1000,
 	config = function()
-		return require("arnau.plugins.configs.catppuccin")
+		return require("plugins.configs.catppuccin")
 	end,
 }
