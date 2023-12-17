@@ -53,21 +53,21 @@ local servers = {
 
 	gopls = {
 		filetypes = { "go", "gomod", "gowork", "gotmpl" },
-		settings = {
-			gopls = {
-				completeUnimported = true,
-				usePlaceholders = true,
-				analyses = {
-					unusedparams = true,
-				},
-				gofumpt = true,
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+			analyses = {
+				unusedparams = true,
 			},
+			gofumpt = true,
 		},
 	},
 
 	terraformls = {
 		filetypes = { "terraform", "terraform-vars" },
-		cmd = { "terraform-ls", "serve" },
+		-- Terraform LS uses stderr for everything
+		-- https://github.com/hashicorp/terraform-ls/issues/1271
+		cmd = { "terraform-ls", "serve", "-log-file", "/dev/null" },
 	},
 	tflint = {
 		filetypes = { "terraform", "terraform-vars" },
