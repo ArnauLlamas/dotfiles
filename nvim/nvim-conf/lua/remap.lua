@@ -60,3 +60,6 @@ vim.keymap.set("n", "<leader>md", "<cmd>MarkdownPreviewToggle<CR>", { desc = "[M
 
 -- Open Oil
 vim.keymap.set("n", "<leader>_", "<cmd>Oil<CR>", { desc = "Open Oil" })
+
+-- LspFormat
+vim.keymap.set("n", "<leader>lf", "<cmd>LspFormat<CR>", { desc = "[L]sp [F]ormat" })
