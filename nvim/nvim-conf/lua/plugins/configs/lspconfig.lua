@@ -42,7 +42,9 @@ require("mason-lspconfig").setup()
 local servers = {
 	pyright = {},
 	docker_compose_language_service = {},
-	html = {},
+	html = {
+		filetypes = { "html", "astro" },
+	},
 	cssls = {},
 	yamlls = {},
 	jsonls = {},
@@ -81,6 +83,7 @@ local servers = {
 		},
 	},
 	volar = {},
+	astro = {},
 
 	lua_ls = {
 		Lua = {
