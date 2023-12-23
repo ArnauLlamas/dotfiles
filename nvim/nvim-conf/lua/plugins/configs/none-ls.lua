@@ -12,10 +12,10 @@ local get_augroup = function(client)
 	return _augroups[client.id]
 end
 
-FORMAT_IS_ENABLED = true
+local format_is_enabled = true
 vim.api.nvim_create_user_command("FormattingToggle", function()
-	FORMAT_IS_ENABLED = not FORMAT_IS_ENABLED
-	print("Setting autoformatting to: " .. tostring(FORMAT_IS_ENABLED))
+	format_is_enabled = not format_is_enabled
+	print("Setting autoformatting to: " .. tostring(format_is_enabled))
 end, {})
 
 local none_ls = require("null-ls")
@@ -61,6 +61,7 @@ local opts = {
 				"markdown.mdx",
 				"graphql",
 				"handlebars",
+				"astro",
 			},
 		}),
 		none_ls.builtins.formatting.rustywind, -- TailwindCSS
@@ -78,7 +79,7 @@ local opts = {
 				group = get_augroup(client),
 				buffer = bufnr,
 				callback = function()
-					if not FORMAT_IS_ENABLED then
+					if not format_is_enabled then
 						return
 					end
 					--  Run the formatting command for the tool that has just attached.
@@ -90,3 +91,16 @@ local opts = {
 }
 
 none_ls.setup(opts)
+
+-- HCLFMT on save
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = vim.api.nvim_create_augroup("terragrunt-hclfmt", { clear = true }),
+	callback = function()
+		if not format_is_enabled then
+			return
+		end
+		if vim.bo.filetype == "hcl" then
+			vim.cmd("silent !sh terragrunt hclfmt --terragrunt-hclfmt-file %")
+		end
+	end,
+})

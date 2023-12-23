@@ -10,7 +10,7 @@ local on_attach = function(_, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+	nmap("<leader>lr", vim.lsp.buf.rename, "[L]sp [R]ename")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
 	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
@@ -31,6 +31,14 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_create_user_command(bufnr, "LspFormat", function(_)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
+
+	vim.keymap.set("n", "<leader>lf", "<cmd>LspFormat<CR>", { desc = "[L]sp [F]ormat" })
+
+	-- Diagnostic keymaps
+	vim.keymap.set("n", "<leader>dd", vim.diagnostic.goto_next)
+	vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+	vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+	vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
@@ -116,3 +124,27 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+-- Configure local LSP if exists
+local testing_lsp = "terragrunt-ls"
+if vim.fn.isdirectory(vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp) == 1 then
+	local lsp = require("lspconfig")
+	local configs = require("lspconfig.configs")
+
+	configs.testing_lsp = {
+		default_config = {
+			name = testing_lsp,
+			cmd = { vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp .. "/" .. testing_lsp, "serve" },
+			-- cmd = { vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp .. "/server.sh" },
+			filetypes = { "hcl" },
+			root_dir = function()
+				return vim.loop.cwd()
+			end,
+		},
+	}
+
+	lsp.testing_lsp.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+end

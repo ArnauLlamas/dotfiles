@@ -9,4 +9,8 @@ return {
 	},
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function(opts)
+		require("oil").setup(opts)
+		vim.keymap.set("n", "<leader>_", "<cmd>Oil<CR>", { desc = "Open Oil" })
+	end,
 }

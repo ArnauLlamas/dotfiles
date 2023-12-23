@@ -102,3 +102,6 @@ api.nvim_create_autocmd("FileType", {
 		keymap.set("n", "q", ":qa<CR>", { buffer = true, silent = true })
 	end,
 })
+
+-- Do not show indent lines on dashboard
+vim.g.indent_blankline_filetype_exclude = { "dashboard" }
