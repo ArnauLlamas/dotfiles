@@ -15,7 +15,6 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 		config = function()
-			require("markdown-preview").setup()
 			vim.keymap.set("n", "<leader>md", "<cmd>MarkdownPreviewToggle<CR>", { desc = "[M]ark[D]own preview" })
 		end,
 	},
