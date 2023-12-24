@@ -7,8 +7,10 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	config = function()
+		-- For some reason I cannot make this work with opts :/
 		require("telescope").setup({
 			-- See `:help telescope` and `:help telescope.setup()`
 			defaults = {
@@ -29,7 +31,7 @@ return {
 					},
 				},
 			},
-			require("plugins.configs.telescope"),
 		})
+		require("plugins.configs.telescope")
 	end,
 }
