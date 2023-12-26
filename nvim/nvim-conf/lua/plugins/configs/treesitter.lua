@@ -2,9 +2,12 @@
 vim.defer_fn(function()
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
+			"astro",
 			"bash",
 			"c",
 			"diff",
+			"go",
+			"hcl",
 			"html",
 			"javascript",
 			"json",
@@ -16,14 +19,13 @@ vim.defer_fn(function()
 			"python",
 			"query",
 			"regex",
+			"terraform",
 			"toml",
 			"typescript",
+			"tsx",
 			"vim",
 			"vimdoc",
 			"yaml",
-			"go",
-			"terraform",
-			"hcl",
 		},
 
 		auto_install = true,
