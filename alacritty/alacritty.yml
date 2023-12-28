@@ -13,6 +13,6 @@ font:
   normal:
     family: SauceCodePro Nerd Font
     style: Regular
-  size: 19.0
+  size: 12.5
 key_bindings:
   - { key: Q, mods: Control, action: Quit }
