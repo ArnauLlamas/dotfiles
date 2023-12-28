@@ -13,4 +13,4 @@ rust latest 1.73.0
 golang 1.21.4
 trivy latest 0.48.0
 pre-commit 3.2.2
-pnpm 8.12.1
+pnpm 8.13.1
