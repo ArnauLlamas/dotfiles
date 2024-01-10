@@ -39,10 +39,10 @@ return {
 				replace = true,
 			}
 
-			vim.keymap.set({ "n", "v" }, "<leader>gen", "<cmd>Gen<CR>")
+			vim.keymap.set({ "n", "v" }, "<leader>AG", "<cmd>Gen<CR>")
 
-			vim.keymap.set({ "n", "v" }, "<leader>aido", "<cmd>Gen DevOps Me!<CR>")
-			vim.keymap.set({ "n", "v" }, "<leader>aipp", "<cmd>Gen Pair Programmer<CR>")
+			vim.keymap.set({ "n", "v" }, "<leader>Ado", "<cmd>Gen DevOps Me!<CR>")
+			vim.keymap.set({ "n", "v" }, "<leader>App", "<cmd>Gen Pair Programmer<CR>")
 		end,
 	},
 }
