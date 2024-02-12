@@ -15,6 +15,7 @@ require("catppuccin").setup({
 			colored_indent_levels = false,
 		},
 		lsp_trouble = true,
+		noice = true,
 	},
 })
 
