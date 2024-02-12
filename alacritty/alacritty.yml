@@ -1,8 +1,7 @@
----
 import: [~/.config/alacritty/catppuccin/catppuccin-mocha.yml]
 live_config_reload: true
 env:
-  TERM: screen-256color
+  TERM: xterm-256color
 window:
   opacity: 1
   padding:
