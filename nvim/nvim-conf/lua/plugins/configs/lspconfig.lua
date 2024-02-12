@@ -50,9 +50,7 @@ require("mason-lspconfig").setup()
 local servers = {
 	pyright = {},
 	docker_compose_language_service = {},
-	html = {
-		filetypes = { "html", "astro" },
-	},
+	html = {},
 	cssls = {},
 	yamlls = {},
 	jsonls = {},
