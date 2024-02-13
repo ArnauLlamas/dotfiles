@@ -24,8 +24,6 @@ local opts = {
 	sources = {
 		-- Python
 		none_ls.builtins.formatting.black,
-		none_ls.builtins.diagnostics.mypy,
-		none_ls.builtins.diagnostics.ruff,
 		-- Go
 		none_ls.builtins.formatting.gofumpt,
 		none_ls.builtins.formatting.goimports_reviser,

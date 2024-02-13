@@ -4,8 +4,6 @@ local options = {
 		-- Python
 		"black",
 		"debugpy",
-		"mypy",
-		"ruff",
 		-- Go
 		"gofumpt",
 		"goimports-reviser",
