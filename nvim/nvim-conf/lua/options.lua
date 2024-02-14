@@ -1,7 +1,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Set neovim's language to English
 vim.api.nvim_exec("language en_US", true)
+
+-- Enable spellcheck
+vim.opt.spell = true
+
 require("remap")
 
 -- Set highlight on search
