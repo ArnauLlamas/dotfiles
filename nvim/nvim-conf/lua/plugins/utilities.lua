@@ -1,4 +1,5 @@
 return {
+	{ "towolf/vim-helm" },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",

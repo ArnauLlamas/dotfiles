@@ -7,6 +7,7 @@ return {
 	config = function()
 		local ft = require("Comment.ft")
 		ft.hcl = { "#%s", "/*%s*/" }
+		ft.helm = { "{{/*%s*/}}" }
 		-- Toggle comment
 		vim.keymap.set("n", "<leader>/", function()
 			require("Comment.api").toggle.linewise.current()

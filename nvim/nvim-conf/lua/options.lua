@@ -70,3 +70,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- autodetect helm files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = {
+		"*/templates/*.yaml",
+		"*/templates/*.yml",
+		"*/templates/*.tpl",
+		"*.gotmpl",
+		"helmfile*.yaml",
+		"helmfile*.yml",
+	},
+	callback = function()
+		vim.cmd("setfiletype helm")
+	end,
+})

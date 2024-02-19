@@ -48,6 +48,7 @@ local opts = {
 		none_ls.builtins.formatting.yamlfmt,
 		none_ls.builtins.diagnostics.yamllint.with({
 			extra_args = { "-c", vim.fn.expand("~/.config/yamllint/config") },
+			disabled_filetypes = { "helm" },
 		}),
 		none_ls.builtins.formatting.shfmt,
 		none_ls.builtins.formatting.prettier.with({ filetypes = { "astro" } }),
