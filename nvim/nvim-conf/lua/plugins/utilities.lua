@@ -1,5 +1,6 @@
 return {
 	{ "towolf/vim-helm" },
+	{ "ttibsi/pre-commit.nvim" },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -35,11 +36,11 @@ return {
 				},
 			},
 			presets = {
-				bottom_search = true,     -- use a classic bottom cmdline for search
-				command_palette = false,  -- position the cmdline and popupmenu together
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = false, -- position the cmdline and popupmenu together
 				long_message_to_split = true, -- long messages will be sent to a split
-				inc_rename = false,       -- enables an input dialog for inc-rename.nvim
-				lsp_doc_border = false,   -- add a border to hover docs and signature help
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false, -- add a border to hover docs and signature help
 			},
 		},
 		dependencies = {
@@ -78,13 +79,11 @@ return {
 			require("gen").setup(opts)
 
 			require("gen").prompts["DevOps Me!"] = {
-				prompt =
-				"You are a senior devops engineer, acting as an assistant. You offer help with cloud technologies like: Terraform, terragrunt, AWS, kubernetes. You answer with code examples when possible. $input:\n$text",
+				prompt = "You are a senior devops engineer, acting as an assistant. You offer help with cloud technologies like: Terraform, terragrunt, AWS, kubernetes. You answer with code examples when possible. $input:\n$text",
 				replace = true,
 			}
 			require("gen").prompts["Pair Programmer"] = {
-				prompt =
-				"You are a senior software developer, acting as an assistant. You offer help with software web technologies and frameworks like: javascript, typescript, astro, go, python, lua. You answer with code examples when possible. $input:\n$text",
+				prompt = "You are a senior software developer, acting as an assistant. You offer help with software web technologies and frameworks like: javascript, typescript, astro, go, python, lua. You answer with code examples when possible. $input:\n$text",
 				replace = true,
 			}
 
