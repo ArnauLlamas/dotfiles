@@ -58,6 +58,11 @@ local servers = {
 	bashls = {},
 	tailwindcss = {},
 	templ = {},
+	helm_ls = {
+		yamlls = {
+			path = "yaml-language-server",
+		},
+	},
 
 	gopls = {
 		filetypes = { "go", "gomod", "gowork", "gotmpl" },
