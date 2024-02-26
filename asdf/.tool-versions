@@ -2,7 +2,7 @@ gum 0.10.0
 terraform 1.5.7
 terragrunt latest 0.51.4
 tflint latest 0.46.0
-kubectl latest 1.24.0
+kubectl latest 1.27.11
 kind latest 0.20.0
 helm latest 3.7.0
 nodejs latest 20.10.0
