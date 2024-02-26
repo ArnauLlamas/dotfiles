@@ -21,7 +21,6 @@ local options = {
 		"yamllint",
 		"yamlfmt",
 		"shfmt",
-		"shellcheck",
 		"prettier",
 		"rustywind",
 	},
