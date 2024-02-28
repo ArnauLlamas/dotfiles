@@ -3,9 +3,9 @@ vim.g.maplocalleader = " "
 
 -- Set neovim's language to English
 local sys = vim.api.nvim_exec("!uname", true)
-if sys == "Linux" then
+if string.find(sys, "Linux") then
 	vim.api.nvim_exec("language en_US.utf-8", true)
-elseif sys == "Darwin" then
+elseif string.find(sys, "Darwin") then
 	vim.api.nvim_exec("language en_US", true)
 end
 
