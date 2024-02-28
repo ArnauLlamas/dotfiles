@@ -31,7 +31,8 @@ vim.keymap.set(
 -- Move around buffers
 vim.keymap.set("n", "<leader>n", "<cmd>bn<CR>", { desc = "Buffer [N]ext" })
 vim.keymap.set("n", "<leader>p", "<cmd>bp<CR>", { desc = "Buffer [P]revious" })
-vim.keymap.set("n", "<leader>x", "<cmd>b#|bd#<CR>", { desc = "Buffer Delete" })
+vim.keymap.set("n", "<leader>x", "<cmd>b#|bd#<CR>", { desc = "Buffer Close File" })
+vim.keymap.set("n", "<leader>X", "<cmd>bd<CR>", { desc = "Buffer Delete" })
 vim.keymap.set("n", "<Tab>", "<cmd>wincmd w<CR>", { desc = "Move to next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>wincmd W<CR>", { desc = "Move to previous buffer" })
 vim.keymap.set("n", "<leader>ss", "<cmd>vertical new<CR>")
