@@ -8,6 +8,7 @@ zsh install/install-deps-macos.sh
 
 # Install other software one by one, in a very specific order
 zsh oh-my-zsh/install.sh
+zsh starship/install.sh
 zsh asdf/install.sh
 zsh alacritty/install.sh
 zsh tmux/install.sh
