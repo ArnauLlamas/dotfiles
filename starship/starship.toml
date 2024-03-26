@@ -28,7 +28,7 @@ expiration_symbol = ' '
 disabled = false
 
 [kubernetes]
-format = ' [$symbol$context]($style)'
+format = ' [$symbol$context(:$namespace)]($style)'
 symbol = '󱃾 '
 disabled = false
 
