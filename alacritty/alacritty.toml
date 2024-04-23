@@ -11,10 +11,10 @@ size = 12.5
 family = "SauceCodePro Nerd Font"
 style = "Regular"
 
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Control"
+# [[keyboard.bindings]]
+# action = "Quit"
+# key = "Q"
+# mods = "Control"
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
