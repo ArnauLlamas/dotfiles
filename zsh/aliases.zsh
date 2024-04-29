@@ -65,6 +65,16 @@ function t() {
   then
     command terragrunt "$@"
   else
+    command tofu "$@"
+  fi
+}
+
+# Terra{form,grunt}
+function te() {
+  if [[ -f "terragrunt.hcl" || "$1" == "run-all" ]]
+  then
+    command terragrunt "$@"
+  else
     command terraform "$@"
   fi
 }
@@ -115,6 +125,10 @@ alias k='kubectl'
 alias pin='pods-in-node'
 
 # Terra aliases
+alias tei="te init"
+alias tep="te plan"
+alias teri="te run-all init"
+alias terp="te run-all plan"
 alias ti="t init"
 alias tp="t plan"
 alias tri="t run-all init"
