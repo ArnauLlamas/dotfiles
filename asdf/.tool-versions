@@ -3,7 +3,7 @@ terraform 1.5.7
 terragrunt latest 0.51.4
 tflint latest 0.46.0
 kubectl latest 1.27.11
-kind latest 0.20.0
+kind latest 0.22.0
 helm latest 3.14.2
 nodejs latest 20.10.0
 yq latest 4.34.2
