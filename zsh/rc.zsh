@@ -24,7 +24,7 @@ plugins=(gitfast aws asdf terraform brew kind golang)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$HOME/.fzf/bin
 export GOROOT="$(go env GOROOT)"
 export GOPATH="$(go env GOPATH)"
 export TERM="xterm-256color"
@@ -44,5 +44,17 @@ eval "$(starship init zsh)"
 
 # Placing it higher makes it partially overwritten (ls...) for unknown reasons :/
 source_if_exists $DOTFILES/zsh/aliases.zsh
+
+# Set up fzf key bindings
+source <(fzf --zsh)
+
+# History
+HISTFILE="$HOME"/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt histignorespace
+
+export EDITOR="nvim"
 
 eval "$(zoxide init --cmd cd zsh)"
