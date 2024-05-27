@@ -30,7 +30,7 @@ export GOPATH="$(go env GOPATH)"
 export TERM="xterm-256color"
 
 # Creds sourcing
-for file in $(ls $HOME/.creds/)
+for file in $HOME/.creds/*
 do
   source_if_exists $file
 done
