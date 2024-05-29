@@ -1,0 +1,14 @@
+[user]
+	name = Arnau Llamas
+	email = arnau.llamas@gmail.com
+[pull]
+	rebase = true
+[core]
+	pager = diffr | less -R
+	editor = nvim
+[interactive]
+	difffilter = diffr
+[url "https://github.com"]
+	insteadOf = git://github.com
+[credential]
+	helper = cache

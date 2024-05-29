@@ -114,6 +114,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
   alias sed='gsed'
 fi
 
+alias co='git checkout $(git for-each-ref refs/heads/ --format="%(refname:short)" | fzf)'
+alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
+
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
 alias valias='nvim $DOTFILES/zsh/aliases.zsh'
