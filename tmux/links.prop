@@ -1,4 +1,3 @@
 $DOTFILES/tmux/tmux.conf=$HOME/.tmux.conf
-$DOTFILES/tmux/tmux-cht.sh=$HOME/bin/tmux-cht.sh
 $DOTFILES/tmux/.tmux-cht-command=$HOME/.tmux-cht-command
 $DOTFILES/tmux/.tmux-cht-languages=$HOME/.tmux-cht-languages
