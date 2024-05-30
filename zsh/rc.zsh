@@ -30,10 +30,10 @@ export GOPATH="$(go env GOPATH)"
 export TERM="xterm-256color"
 
 # Creds sourcing
-for file in $HOME/.creds/*
+$(for file in $HOME/.creds/*
 do
   source_if_exists $file
-done
+done) || echo "no creds loaded..."
 
 # Repos folder
 export REPOS=$HOME/Documents/repos
