@@ -1,6 +1,8 @@
 return {
 	{ "towolf/vim-helm" },
 	{ "ttibsi/pre-commit.nvim" },
+	-- Detect tabstop and shiftwidth automatically
+	{ "tpope/vim-sleuth" },
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -15,8 +17,6 @@ return {
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		},
 	},
-	-- Detect tabstop and shiftwidth automatically
-	"tpope/vim-sleuth",
 	{
 		"szw/vim-maximizer",
 		config = function()
