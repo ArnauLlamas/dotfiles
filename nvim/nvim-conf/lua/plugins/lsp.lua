@@ -28,7 +28,8 @@ return {
 			},
 
 			-- Additional lua configuration, makes nvim stuff amazing!
-			{ "folke/neodev.nvim", opts = {} },
+			-- { "folke/neodev.nvim", opts = {} },
+			{ "folke/lazydev.nvim", opts = {} },
 		},
 		config = function()
 			require("plugins.configs.lspconfig")
