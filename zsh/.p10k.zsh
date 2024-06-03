@@ -62,9 +62,8 @@
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    command_execution_time    # previous command duration
-    virtualenv                # python virtual environment
-    context                   # user@host
+    kubecontext               # current kubernetes context
+    aws                       # aws profile
     time                      # current time
     # =========================[ Line #2 ]=========================
     newline                   # \n
@@ -72,6 +71,7 @@
 
   # Basic style options that define the overall prompt look.
   typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background
+  typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last      # show deepest dir only
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=  # no surrounding whitespace
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '  # separate segments with a space
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=        # no end-of-line symbol
@@ -118,6 +118,16 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
   # Yellow previous command duration.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$yellow
+
+  # AWS Prompt
+  typeset -g POWERLEVEL9K_AWS_FOREGROUND=$yellow
+
+  # Kubectx Prompt
+  typeset -g POWERLEVEL9K_KUBECONTEXT_FOREGROUND=$cyan
+  typeset -g POWERLEVEL9K_KUBECONTEXT_CONTENT_EXPANSION=
+  POWERLEVEL9K_KUBECONTEXT_CONTENT_EXPANSION+='${P9K_KUBECONTEXT_NAME}'
+  POWERLEVEL9K_KUBECONTEXT_CONTENT_EXPANSION+=':${P9K_KUBECONTEXT_NAMESPACE}'
+
 
   # Grey Git prompt. This makes stale prompts indistinguishable from up-to-date ones.
   typeset -g POWERLEVEL9K_VCS_FOREGROUND=$grey
