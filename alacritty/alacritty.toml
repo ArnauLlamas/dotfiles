@@ -11,6 +11,21 @@ size = 12.5
 family = "SauceCodePro Nerd Font"
 style = "Regular"
 
+[font.bold]
+family = "SauceCodePro Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "SauceCodePro Nerd Font"
+
+[font.offset]
+x = 0
+y = 0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
 # [[keyboard.bindings]]
 # action = "Quit"
 # key = "Q"
