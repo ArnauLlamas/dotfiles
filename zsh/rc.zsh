@@ -67,6 +67,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
 # Add in snippets
+zinit snippet OMZP::gitfast
 zinit snippet OMZP::aws
 zinit snippet OMZP::asdf
 zinit snippet OMZP::terraform
