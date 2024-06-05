@@ -116,6 +116,9 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+# UP and DOWN arrowkeys
+bindkey '^[OA' history-search-backward
+bindkey '^[OB' history-search-forward
 
 # History
 HISTFILE="$HOME"/.zsh_history
