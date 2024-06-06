@@ -113,6 +113,7 @@ alias dclean='docker-clean'
 if [[ "$(uname)" == "Darwin" ]]; then
   alias sed='gsed'
 fi
+alias yl='yq -C | less -R'
 
 alias co='git checkout $(git for-each-ref refs/heads/ --format="%(refname:short)" | fzf)'
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
