@@ -115,8 +115,30 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 alias yl='yq -C | less -R'
 
-alias co='git checkout $(git for-each-ref refs/heads/ --format="%(refname:short)" | fzf)'
+# gh
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
+
+# git
+alias gb='git checkout $(git for-each-ref refs/heads/ --format="%(refname:short)" | fzf)'
+alias gbn='git checkout -b'
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add -A'
+alias gac='git add .'
+alias gp='git pull'
+alias gpc='git pull $(git branch --show-current)'
+alias gpm='git pull $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
+alias gP='git push origin $(git branch --show-current)'
+alias gss='git stash'
+alias gssp='git stash pop'
+alias gssP='git stash push'
+alias gssl='git stash list'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gl='git log'
 
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
