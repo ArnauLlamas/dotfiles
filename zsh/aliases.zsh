@@ -114,6 +114,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   alias sed='gsed'
 fi
 alias yl='yq -C | less -R'
+alias tt='toggle_transparency'
 
 # gh
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
@@ -152,6 +153,7 @@ alias valias='nvim $DOTFILES/zsh/aliases.zsh'
 alias tms='tmux source ~/.tmux.conf'
 alias tm='tmux new-session -A -D -s'
 alias tmm='tm main'
+alias tms='tmux-sessionizer'
 
 # k8s aliases
 alias k='kubectl'
