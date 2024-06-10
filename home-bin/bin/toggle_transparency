@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
-## Fetch background_opacity from alacritty.yml
-opacity=$(awk '$1 == "opacity:" {print $2; exit}' \
-    $DOTFILES/alacritty/alacritty.yml)
+## Fetch background_opacity from alacritty.toml
+opacity=$(awk '$1 == "opacity" {print $3; exit}' \
+	$DOTFILES/alacritty/alacritty.toml)
 
 ## Assign toggle opacity value
 case $opacity in
-  1)
-    toggle_opacity=0.95
-    ;;
-  *)
-    toggle_opacity=1
-    ;;
+1)
+	toggle_opacity=0.95
+	;;
+*)
+	toggle_opacity=1
+	;;
 esac
 
-## Replace opacity value in alacritty.yml
+## Replace opacity value in alacritty.toml
 if [[ "$(uname)" == "Darwin" ]]; then
-  gsed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
-    $DOTFILES/alacritty/alacritty.yml
+	gsed -i -- "s/opacity = $opacity/opacity = $toggle_opacity/" \
+		$DOTFILES/alacritty/alacritty.toml
 else
-  sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
-    $DOTFILES/alacritty/alacritty.yml
+	sed -i -- "s/opacity = $opacity/opacity = $toggle_opacity/" \
+		$DOTFILES/alacritty/alacritty.toml
 fi
