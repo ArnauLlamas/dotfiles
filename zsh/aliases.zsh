@@ -119,19 +119,23 @@ alias yl='yq -C | less -R'
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 
 # git
-alias gb='git checkout $(git for-each-ref refs/heads/ --format="%(refname:short)" | fzf)'
+gbf () {
+  git checkout $(git branch -a | grep -v 'HEAD' | grep -v '*' | awk -F'remotes/origin/' 'NF==2{ print $2 }; NF==1{ print $1 }' | tr -d ' ' |  sort | uniq | fzf)
+}
+alias gb='git checkout'
 alias gbn='git checkout -b'
 alias gs='git status'
 alias ga='git add'
 alias gaa='git add -A'
 alias gac='git add .'
 alias gp='git pull'
-alias gpc='git pull $(git branch --show-current)'
-alias gpm='git pull $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
+alias gpc='git pull origin $(git branch --show-current)'
+alias gpm='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
 alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 alias gP='git push origin $(git branch --show-current)'
+alias gPf='git push --force origin $(git branch --show-current)'
 alias gss='git stash'
 alias gssp='git stash pop'
 alias gssP='git stash push'
