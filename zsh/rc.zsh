@@ -128,6 +128,8 @@ if [[ "$(uname)" == "Linux" ]]; then
 elif [[ "$(uname)" == "Darwin" ]]; then
   bindkey '^[[A' history-search-backward
   bindkey '^[[B' history-search-forward
+  # fix Supr key
+  bindkey "^[[3~" delete-char
 fi
 
 # History
