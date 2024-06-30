@@ -2,11 +2,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set neovim's language to English
-local sys = vim.api.nvim_exec("!uname", true)
+local sys = vim.api.nvim_exec2("!uname", { output = true }).output
 if string.find(sys, "Linux") then
-	vim.api.nvim_exec("language en_US.utf-8", true)
+	vim.api.nvim_exec2("language en_US.utf-8", {})
 elseif string.find(sys, "Darwin") then
-	vim.api.nvim_exec("language en_US", true)
+	vim.api.nvim_exec2("language en_US", {})
 end
 
 -- Enable spellcheck
