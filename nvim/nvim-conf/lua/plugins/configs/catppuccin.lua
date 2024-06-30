@@ -9,6 +9,7 @@ require("catppuccin").setup({
 		treesitter_context = true,
 		gitsigns = true,
 		fidget = true,
+		flash = true,
 		indent_blankline = {
 			enabled = true,
 			scope_color = "lavender",

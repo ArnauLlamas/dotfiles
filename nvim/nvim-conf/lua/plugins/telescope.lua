@@ -26,9 +26,6 @@ return {
 					horizontal = {
 						prompt_position = "top",
 					},
-					vertical = {
-						mirror = false,
-					},
 				},
 			},
 		})
