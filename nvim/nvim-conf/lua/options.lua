@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.have_nerd_font = true
+
 -- Set neovim's language to English
 local sys = vim.api.nvim_exec2("!uname", { output = true }).output
 if string.find(sys, "Linux") then

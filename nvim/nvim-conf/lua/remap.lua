@@ -33,11 +33,15 @@ vim.keymap.set("n", "<leader>n", "<cmd>bn<CR>", { desc = "Buffer [N]ext" })
 vim.keymap.set("n", "<leader>p", "<cmd>bp<CR>", { desc = "Buffer [P]revious" })
 vim.keymap.set("n", "<leader>q", "<cmd>b#|bd#<CR>", { desc = "Buffer Close File" })
 vim.keymap.set("n", "<leader>Q", "<cmd>bd<CR>", { desc = "Buffer Delete" })
+
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<Tab>", "<cmd>wincmd w<CR>", { desc = "Move to next buffer" })
-vim.keymap.set("n", "<C-l>", "<cmd>wincmd w<CR>", { desc = "Move to next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>wincmd W<CR>", { desc = "Move to previous buffer" })
-vim.keymap.set("n", "<C-h>", "<cmd>wincmd W<CR>", { desc = "Move to previous buffer" })
-vim.keymap.set("n", "<leader>ss", "<cmd>vertical new<CR>")
+
+vim.keymap.set("n", "<leader>ss", "<cmd>vertical split<CR>", { desc = "[S]plit" })
 vim.keymap.set("n", "<leader>sv", "<cmd>vertical split<CR>", { desc = "[S]plit [V]ertical" })
 vim.keymap.set("n", "<leader>sh", "<cmd>horizontal new<CR>", { desc = "[S]plit [H]orizontal" })
 
