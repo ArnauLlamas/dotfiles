@@ -127,6 +127,7 @@ gbf () {
 }
 alias gb='git checkout'
 alias gbn='git checkout -b'
+alias gbd='git checkout $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
 alias gs='git status'
 alias ga='git add'
 alias gap='git add --patch'
@@ -162,6 +163,8 @@ alias tms='tmux-sessionizer'
 # k8s aliases
 alias k='kubectl'
 alias pin='pods-in-node'
+alias kx='kubectx'
+alias kn='kubens'
 
 # Terra aliases
 alias tei="te init"
