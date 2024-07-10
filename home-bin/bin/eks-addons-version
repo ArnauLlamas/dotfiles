@@ -1,0 +1,21 @@
+#!/bin/bash
+
+K8S_VERSION=$1
+EKS_ADDON=$2
+
+if [[ "$K8S_VERSION" == "" ]]; then
+	echo "No k8s version provided. Exiting"
+	exit 1
+fi
+
+if [[ "$EKS_ADDON" == "" ]]; then
+	echo "No EKS addon supplied, will check for 'vpc-cni', 'coredns', 'kube-proxy' and 'aws-ebs-csi-driver'"
+	EKS_ADDON=(vpc-cni coredns kube-proxy aws-ebs-csi-driver)
+fi
+
+for addon in "${EKS_ADDON[@]}"; do
+	echo "$addon"
+	aws eks describe-addon-versions --addon-name "$addon" --kubernetes-version "$K8S_VERSION" | jq -r '.addons[].addonVersions[] | [.addonVersion, if .compatibilities[0].defaultVersion then "Default" else "" end, if .requiresConfiguration then "Must be configured" else "" end] | @tsv'
+	echo "############"
+	echo "############"
+done
