@@ -63,7 +63,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/arnau/.asdf/installs/opentofu/1.6.2/bin/tofu tofu
 
 # Opentofu/Terragrunt
-function t() {
+function to() {
   if [[ -f "terragrunt.hcl" || "$1" == "run-all" ]]
   then
     command terragrunt "$@"
@@ -73,7 +73,7 @@ function t() {
 }
 
 # Terra{form,grunt}
-function te() {
+function t() {
   if [[ -f "terragrunt.hcl" || "$1" == "run-all" ]]
   then
     command terragrunt "$@"
