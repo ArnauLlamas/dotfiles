@@ -12,3 +12,5 @@
 	insteadOf = git://github.com
 [credential]
 	helper = cache
+[init]
+	defaultBranch = main
