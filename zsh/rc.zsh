@@ -153,5 +153,6 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Shell integrations
+source <(just --completions=zsh)
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"

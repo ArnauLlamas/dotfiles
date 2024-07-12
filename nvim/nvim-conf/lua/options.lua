@@ -92,3 +92,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.cmd("setfiletype helm")
 	end,
 })
+
+-- autodetect justfiles
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = {
+		"justfile",
+	},
+	callback = function()
+		vim.cmd("setfiletype just")
+	end,
+})

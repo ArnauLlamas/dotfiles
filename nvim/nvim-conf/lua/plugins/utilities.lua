@@ -1,5 +1,9 @@
 return {
 	{
+		"NoahTheDuke/vim-just",
+		ft = { "just" },
+	},
+	{
 		"echasnovski/mini.ai",
 		version = "*",
 		config = function()
