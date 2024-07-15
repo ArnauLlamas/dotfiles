@@ -46,6 +46,9 @@ return {
 			})
 
 			require("noice").setup({
+				cmdline = {
+					view = "cmdline",
+				},
 				routes = {
 					{
 						filter = {
@@ -57,14 +60,9 @@ return {
 					},
 				},
 				views = {
-					cmdline_popup = {
-						border = {
-							style = "none",
-							padding = { 1, 3 },
-						},
-						filter_options = {},
-						win_options = {
-							winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+					cmdline = {
+						position = {
+							row = "98%",
 						},
 					},
 				},
@@ -77,11 +75,11 @@ return {
 					},
 				},
 				presets = {
-					bottom_search = true, -- use a classic bottom cmdline for search
+					bottom_search = true,    -- use a classic bottom cmdline for search
 					command_palette = false, -- position the cmdline and popupmenu together
 					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					lsp_doc_border = false, -- add a border to hover docs and signature help
+					inc_rename = false,      -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = true,   -- add a border to hover docs and signature help
 				},
 			})
 		end,
