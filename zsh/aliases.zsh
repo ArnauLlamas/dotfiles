@@ -125,6 +125,22 @@ alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 gbf () {
   git checkout $(git branch -a | grep -v 'HEAD' | grep -v '*' | awk -F'remotes/origin/' 'NF==2{ print $2 }; NF==1{ print $1 }' | tr -d ' ' |  sort | uniq | fzf)
 }
+gwa () {
+  if [[ "$1" == "" ]]; then
+    echo "Provide a name for the worktree"
+    exit 1
+  else
+    WT_NAME=$1
+  fi
+
+  if [[ "$2" == "" ]]; then
+    BRANCH=$(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")
+  else
+    BRANCH=$2
+  fi
+
+  git worktree add "$REPOS/$(basename `git rev-parse --show-toplevel`)-$WT_NAME" "$BRANCH"
+}
 alias gb='git checkout'
 alias gbn='git checkout -b'
 alias gbd='git checkout $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
@@ -136,12 +152,15 @@ alias gapc='git add . --patch'
 alias gaa='git add -A'
 alias gp='git pull'
 alias gpc='git pull origin $(git branch --show-current)'
-alias gpm='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
+alias gpd='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
 alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 alias gP='git push origin $(git branch --show-current)'
 alias gPf='git push --force origin $(git branch --show-current)'
+alias gwl='git worktree list'
+alias gwr='git worktree remove'
+alias gwrc='git worktree remove .'
 alias gss='git stash'
 alias gssp='git stash pop'
 alias gssP='git stash push'
