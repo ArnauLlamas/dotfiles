@@ -86,7 +86,7 @@ local servers = {
 		filetypes = { "terraform", "terraform-vars" },
 	},
 
-	tsserver = {
+	ts_ls = {
 		init_options = {
 			preferences = {
 				disableSuggestions = true,
