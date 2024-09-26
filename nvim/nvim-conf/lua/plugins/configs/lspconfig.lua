@@ -128,6 +128,10 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
+-- Configure servers not available in mason_lspconfig
+local lspconfig = require("lspconfig")
+lspconfig.gdscript.setup({})
+
 -- Configure local LSP if exists
 local testing_lsp = "terragrunt-ls"
 if vim.fn.isdirectory(vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp) == 1 then

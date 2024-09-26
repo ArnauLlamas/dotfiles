@@ -26,6 +26,7 @@ vim.defer_fn(function()
 			"vim",
 			"vimdoc",
 			"yaml",
+			"gdscript",
 		},
 		-- Autoinstall languages that are not installed.
 		auto_install = true,

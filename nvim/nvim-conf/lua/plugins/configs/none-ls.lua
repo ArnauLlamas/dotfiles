@@ -36,6 +36,11 @@ local opts = {
 		-- none_ls.builtins.diagnostics.terraform_validate,
 		none_ls.builtins.diagnostics.tfsec,
 		none_ls.builtins.diagnostics.trivy,
+		-- Godot
+		none_ls.builtins.diagnostics.gdlint.with({
+			filetypes = { "gd", "gdscript", "gdscript3" },
+		}),
+		none_ls.builtins.formatting.gdformat,
 		-- Others
 		none_ls.builtins.formatting.stylua,
 		none_ls.builtins.diagnostics.hadolint,

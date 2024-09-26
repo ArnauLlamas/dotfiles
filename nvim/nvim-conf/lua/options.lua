@@ -102,3 +102,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.cmd("setfiletype just")
 	end,
 })
+
+-- autodetect gdscript files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = {
+		"**/*.gd",
+		"*.gd",
+	},
+	callback = function()
+		vim.cmd("setfiletype gdscript")
+	end,
+})
