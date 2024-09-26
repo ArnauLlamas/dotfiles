@@ -128,7 +128,7 @@ gbf () {
 gwa () {
   if [[ "$1" == "" ]]; then
     echo "Provide a name for the worktree"
-    exit 1
+    return 1
   else
     WT_NAME=$1
   fi
