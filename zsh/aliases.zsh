@@ -125,6 +125,9 @@ alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 gbf () {
   git checkout $(git branch -a | grep -v 'HEAD' | grep -v '*' | awk -F'remotes/origin/' 'NF==2{ print $2 }; NF==1{ print $1 }' | tr -d ' ' |  sort | uniq | fzf)
 }
+gpf () {
+  git pull origin $(git branch -a | grep -v 'HEAD' | grep -v '*' | awk -F'remotes/origin/' 'NF==2{ print $2 }; NF==1{ print $1 }' | tr -d ' ' |  sort | uniq | fzf)
+}
 gwa () {
   if [[ "$1" == "" ]]; then
     echo "Provide a name for the worktree"
@@ -144,6 +147,7 @@ gwa () {
 alias gb='git checkout'
 alias gbn='git checkout -b'
 alias gbd='git checkout $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
+alias gbc='git branch --show-current'
 alias gs='git status'
 alias ga='git add'
 alias gap='git add --patch'
