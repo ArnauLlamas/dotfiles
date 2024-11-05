@@ -16,7 +16,7 @@ source_if_exists () {
 }
 
 # Custom variables
-export TERM="xterm-256color"
+export TERM="tmux-256color"
 export EDITOR="nvim"
 
 export REPOS=$HOME/Documents/repos

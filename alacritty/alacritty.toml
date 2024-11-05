@@ -2,7 +2,7 @@ import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [env]
-TERM = "xterm-256color"
+TERM = "tmux-256color"
 
 [font]
 size = 12.5
@@ -37,9 +37,9 @@ key = "N"
 mods = "Control|Shift"
 
 [window]
-decorations = "full"
-opacity = 0.95
+decorations = "None"
+opacity = 0.75
 
 [window.padding]
-x = 5
-y = 5
+x = 0
+y = 0
