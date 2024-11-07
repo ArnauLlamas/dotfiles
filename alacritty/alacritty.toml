@@ -37,7 +37,7 @@ key = "N"
 mods = "Control|Shift"
 
 [window]
-decorations = "None"
+decorations = "full"
 opacity = 0.75
 
 [window.padding]
