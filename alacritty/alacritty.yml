@@ -1,0 +1,20 @@
+import: [~/.config/alacritty/catppuccin/catppuccin-mocha.yml]
+# general:
+#   live_config_reload: true
+live_config_reload: true
+env:
+  TERM: tmux-256color
+window:
+  opacity: 0.75
+  padding:
+    x: 5
+    y: 5
+  decorations: full
+font:
+  normal:
+    family: SauceCodePro Nerd Font
+    style: Regular
+  size: 12.5
+key_bindings:
+  - {key: Q, mods: Control, action: Quit}
+  - {key: N, mods: "Control|Shift", action: SpawnNewInstance}

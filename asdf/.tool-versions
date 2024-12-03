@@ -9,7 +9,7 @@ nodejs latest 20.10.0
 yq latest 4.34.2
 github-cli latest 2.32.0
 act latest 0.2.49
-rust latest 1.73.0
+rust latest 1.82.0
 golang 1.21.4
 trivy latest 0.48.0
 pre-commit 3.2.2
