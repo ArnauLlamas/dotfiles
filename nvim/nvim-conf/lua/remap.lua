@@ -44,6 +44,7 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>wincmd W<CR>", { desc = "Move to previous b
 vim.keymap.set("n", "<leader>ss", "<cmd>vertical split<CR>", { desc = "[S]plit" })
 vim.keymap.set("n", "<leader>sv", "<cmd>vertical split<CR>", { desc = "[S]plit [V]ertical" })
 vim.keymap.set("n", "<leader>sh", "<cmd>horizontal new<CR>", { desc = "[S]plit [H]orizontal" })
+vim.keymap.set("i", "jj", "<ESC>")
 
 -- Tabbing in visual mode with Tab
 vim.keymap.set("v", "<Tab>", ">gv")
