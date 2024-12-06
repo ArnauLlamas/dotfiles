@@ -1,9 +1,5 @@
 return {
 	{
-		"NoahTheDuke/vim-just",
-		ft = { "just" },
-	},
-	{
 		"echasnovski/mini.ai",
 		version = "*",
 		config = function()
@@ -11,7 +7,6 @@ return {
 		end,
 	},
 	{ "towolf/vim-helm" },
-	{ "ttibsi/pre-commit.nvim" },
 	-- Detect tabstop and shiftwidth automatically
 	{ "tpope/vim-sleuth" },
 	{

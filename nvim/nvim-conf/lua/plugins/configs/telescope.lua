@@ -71,7 +71,7 @@ end
 vim.keymap.set("n", "<leader>f/", telescope_live_grep_open_files, { desc = "[F]ind [/] in Open Files" })
 
 vim.keymap.set("n", "<leader>fs", require("telescope.builtin").builtin, { desc = "[F]ind [S]elect Telescope" })
-vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "[F]ind in [G]it files" })
+vim.keymap.set("n", "<leader>ft", require("telescope.builtin").git_files, { desc = "[F]ind in [G]it files" })
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]iles" })
 vim.keymap.set("n", "<leader>fF", "<cmd>FindFilesGitRoot<CR>", { desc = "[F]ind [F]iles on Git Root" })
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })

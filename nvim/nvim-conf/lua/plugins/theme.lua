@@ -37,14 +37,8 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"hrsh7th/nvim-cmp",
-			"rcarriga/nvim-notify",
 		},
 		config = function()
-			require("notify").setup({
-				timeout = 1500,
-				stages = "static",
-			})
-
 			require("noice").setup({
 				cmdline = {
 					view = "cmdline",
@@ -58,6 +52,9 @@ return {
 						},
 						opts = { skip = true },
 					},
+				},
+				notify = {
+					enabled = false,
 				},
 				views = {
 					cmdline = {
