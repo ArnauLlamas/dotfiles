@@ -7,7 +7,7 @@ opacity=$(awk '$1 == "opacity" {print $3; exit}' \
 ## Assign toggle opacity value
 case $opacity in
 1)
-	toggle_opacity=0.95
+	toggle_opacity=0.80
 	;;
 *)
 	toggle_opacity=1
