@@ -81,6 +81,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+-- Customization of filetypes
+vim.filetype.add({
+	extension = {
+		tf = "terraform",
+		tfvars = "terraform",
+		tfstate = "json",
+		sh = "bash",
+		gd = "gdscript",
+		justfile = "just",
+	},
+})
+
 -- autodetect helm files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = {
@@ -93,26 +105,5 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	},
 	callback = function()
 		vim.cmd("setfiletype helm")
-	end,
-})
-
--- autodetect justfiles
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = {
-		"justfile",
-	},
-	callback = function()
-		vim.cmd("setfiletype just")
-	end,
-})
-
--- autodetect gdscript files
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = {
-		"**/*.gd",
-		"*.gd",
-	},
-	callback = function()
-		vim.cmd("setfiletype gdscript")
 	end,
 })
