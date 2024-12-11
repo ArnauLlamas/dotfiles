@@ -145,7 +145,7 @@ if vim.fn.isdirectory(vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp) == 1 the
 			-- cmd = { vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp .. "/server.sh" },
 			filetypes = { "hcl" },
 			root_dir = function()
-				return vim.loop.cwd()
+				return vim.fn.getcwd()
 			end,
 		},
 	}
