@@ -71,6 +71,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.cmd("abbreviate lenght length")
+
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
