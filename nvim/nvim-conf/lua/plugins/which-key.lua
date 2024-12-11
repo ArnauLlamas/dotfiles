@@ -14,7 +14,6 @@ return {
 			{ "<leader>w", group = "[W]orkspace" },
 			{ "<leader>l", group = "[L]SP" },
 			{ "<leader>s", group = "[S]plit" },
-			{ "<leader>x", group = "Trouble" },
 		})
 		-- register which-key VISUAL mode
 		-- required for visual <leader>hs (hunk stage) to work
