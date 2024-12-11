@@ -26,6 +26,12 @@ local on_attach = function(_, bufnr)
 	end, { desc = "Format current buffer with LSP" })
 
 	vim.keymap.set("n", "<leader>lf", "<cmd>LspFormat<CR>", { desc = "[L]sp [F]ormat" })
+	vim.keymap.set(
+		"n",
+		"<leader>lF",
+		"<cmd>LspFormat<CR><cmd>FormattingDisable<CR><cmd>write<CR><cmd>FormattingEnable<CR>",
+		{ desc = "[L]sp [F]ormat and save" }
+	)
 
 	-- Diagnostic keymaps
 	vim.keymap.set("n", "<leader>dd", vim.diagnostic.goto_next)

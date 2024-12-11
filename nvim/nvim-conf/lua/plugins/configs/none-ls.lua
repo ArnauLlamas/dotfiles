@@ -18,6 +18,14 @@ vim.api.nvim_create_user_command("FormattingToggle", function()
 	print("Setting autoformatting to: " .. tostring(format_is_enabled))
 end, {})
 
+vim.api.nvim_create_user_command("FormattingDisable", function()
+	format_is_enabled = false
+end, {})
+
+vim.api.nvim_create_user_command("FormattingEnable", function()
+	format_is_enabled = true
+end, {})
+
 local none_ls = require("null-ls")
 
 local opts = {
