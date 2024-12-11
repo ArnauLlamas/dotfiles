@@ -36,25 +36,11 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"hrsh7th/nvim-cmp",
 		},
 		config = function()
 			require("noice").setup({
 				cmdline = {
 					view = "cmdline",
-				},
-				routes = {
-					{
-						filter = {
-							event = "msg_show",
-							kind = "",
-							find = "written",
-						},
-						opts = { skip = true },
-					},
-				},
-				notify = {
-					enabled = false,
 				},
 				views = {
 					cmdline = {
