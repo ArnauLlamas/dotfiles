@@ -4,7 +4,7 @@ terragrunt latest 0.51.4
 tflint latest 0.46.0
 kubectl latest 1.27.11
 kind latest 0.22.0
-helm latest 3.14.2
+helm latest 3.16.3
 nodejs latest 20.10.0
 yq latest 4.34.2
 github-cli latest 2.32.0
