@@ -144,6 +144,7 @@ gwa () {
 
   git worktree add "$REPOS/$(basename `git rev-parse --show-toplevel`)-$WT_NAME" "$BRANCH"
 }
+alias cdg='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
 alias gb='git checkout'
 alias gbn='git checkout -b'
 alias gbd='git checkout $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
