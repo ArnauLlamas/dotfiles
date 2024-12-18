@@ -29,6 +29,7 @@ return {
 		})
 
 		require("telescope").load_extension("fzf")
+		require("telescope").load_extension("ui-select")
 
 		local builtin = require("telescope.builtin")
 		local utils = require("telescope.utils")
