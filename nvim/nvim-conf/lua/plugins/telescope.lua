@@ -14,7 +14,12 @@ return {
 		require("telescope").setup({
 			-- See `:help telescope` and `:help telescope.setup()`
 			extensions = {
-				fzf = {},
+				fzf = {
+					fuzzy = true,
+					override_generic_sorter = true,
+					override_file_sorter = true,
+					case_mode = "smart_case"
+				},
 			},
 			defaults = vim.tbl_extend("force", require("telescope.themes").get_ivy(), {
 				path_display = {
@@ -22,6 +27,9 @@ return {
 				},
 			}),
 		})
+
+		require("telescope").load_extension("fzf")
+
 		local builtin = require("telescope.builtin")
 		local utils = require("telescope.utils")
 		local multigrep = require("plugins.configs.telescope.multigrep")
