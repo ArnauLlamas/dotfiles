@@ -3,19 +3,8 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
--- Set neovim's language to English
-local sys = vim.api.nvim_exec2("!uname", { output = true }).output
-if string.find(sys, "Linux") then
-	vim.api.nvim_exec2("language en_US.utf-8", {})
-elseif string.find(sys, "Darwin") then
-	vim.api.nvim_exec2("language en_US", {})
-end
-
 -- Make underscores a word separator
 vim.opt.iskeyword:remove({ "_" })
-
--- Enable spellcheck
-vim.opt.spell = true
 
 require("remap")
 
@@ -72,6 +61,17 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.cmd("abbreviate lenght length")
+
+-- Set neovim's language to English
+local sys = vim.api.nvim_exec2("!uname", { output = true }).output
+if string.find(sys, "Linux") then
+	vim.cmd("language en_US.utf-8")
+elseif string.find(sys, "Darwin") then
+	vim.cmd("language en_US")
+end
+
+-- Enable spellcheck
+vim.opt.spell = true
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })

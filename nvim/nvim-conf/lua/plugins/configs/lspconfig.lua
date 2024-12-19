@@ -48,6 +48,7 @@ require("mason-lspconfig").setup()
 -- Enable the following language servers
 local servers = {
 	pyright = {},
+	pylsp = {},
 	docker_compose_language_service = {},
 	html = {},
 	cssls = {},
@@ -56,7 +57,6 @@ local servers = {
 	dockerls = {},
 	bashls = {},
 	tailwindcss = {},
-	templ = {},
 	helm_ls = {
 		yamlls = {
 			path = "yaml-language-server",
@@ -92,7 +92,6 @@ local servers = {
 			},
 		},
 	},
-	volar = {},
 	astro = {},
 
 	lua_ls = {
@@ -105,9 +104,8 @@ local servers = {
 	},
 }
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- blink.cmp capabilities
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")

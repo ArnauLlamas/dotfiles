@@ -7,7 +7,6 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
-		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	config = function()
 		-- For some reason I cannot make this work with opts :/
@@ -18,7 +17,7 @@ return {
 					fuzzy = true,
 					override_generic_sorter = true,
 					override_file_sorter = true,
-					case_mode = "smart_case"
+					case_mode = "smart_case",
 				},
 			},
 			defaults = vim.tbl_extend("force", require("telescope.themes").get_ivy(), {
@@ -29,10 +28,8 @@ return {
 		})
 
 		require("telescope").load_extension("fzf")
-		require("telescope").load_extension("ui-select")
 
 		local builtin = require("telescope.builtin")
-		local utils = require("telescope.utils")
 		local multigrep = require("plugins.configs.telescope.multigrep")
 		local function nmap(keymap, func, desc)
 			vim.keymap.set("n", keymap, func, { desc = desc })
@@ -44,16 +41,12 @@ return {
 		nmap("<leader>?", builtin.oldfiles, "[?] Find recently opened files")
 		nmap("<leader><space>", builtin.buffers, "[ ] Find existing buffers")
 		nmap("<leader>fc", builtin.current_buffer_fuzzy_find, "[F]ind in [C]urrent buffer")
-		nmap("<leader>ff", function()
-			builtin.find_files({ cwd = utils.buffer_dir() })
-		end, "[F]ind [F]iles")
+		nmap("<leader>ff", builtin.find_files, "[F]ind [F]iles")
 		nmap("<leader>fF", builtin.git_files, "[F]ind [F]iles from git root")
 		nmap("<leader>fb", builtin.builtin, "[F]ind Telescope [B]uiltins")
 		nmap("<leader>fh", builtin.help_tags, "[F]ind [H]elp [T]ags")
 		nmap("<leader>fw", builtin.grep_string, "[F]ind current [W]ord")
-		nmap("<leader>fg", function()
-			multigrep.live_multigrep({ cwd = utils.buffer_dir() })
-		end, "[F]ind [G]rep")
+		nmap("<leader>fg", multigrep.live_multigrep, "[F]ind [G]rep")
 		nmap("<leader>fG", function()
 			multigrep.live_multigrep({ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] })
 		end, "[F]ind [G]rep from git root")
@@ -72,6 +65,9 @@ return {
 		nmap("<leader>fS", builtin.lsp_dynamic_workspace_symbols, "LSP: [F]ind [S]ymbols all workspace")
 
 		-- Niche finders
+		nmap("<leader>sp", function()
+			builtin.spell_suggest(require("telescope.themes").get_cursor({}))
+		end, "Spell suggestions")
 		nmap("<leader>fp", function()
 			require("telescope.builtin").find_files({
 				cwd = vim.fn.stdpath("data") .. "/" .. "lazy",

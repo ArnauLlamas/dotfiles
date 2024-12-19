@@ -100,7 +100,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			return
 		end
 		if vim.bo.filetype == "hcl" then
-			vim.cmd("silent !sh terragrunt hclfmt --terragrunt-hclfmt-file %")
+			vim.cmd("silent !terragrunt hclfmt --terragrunt-hclfmt-file %")
 		end
 	end,
 })
