@@ -124,17 +124,17 @@ alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 # git
 gd () {
   if [[ "$1" == "" ]]; then
-    GD_PATH=""
+    GD_PATH=":!*lock*"
   else GD_PATH=$1
   fi
-  git diff -- ':!*lock*' ${GD_PATH} 
+  git diff -- ${GD_PATH} 
 }
 gds () {
   if [[ "$1" == "" ]]; then
-    GD_PATH=""
+    GD_PATH=":!*lock*"
   else GD_PATH=$1
   fi
-  git diff --staged -- ':!*lock*' ${GD_PATH}
+  git diff --staged -- ${GD_PATH}
 }
 gcfc () {
   git checkout $(git log --format=reference | fzf | awk '{ print $1 }')
