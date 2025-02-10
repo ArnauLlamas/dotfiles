@@ -122,6 +122,29 @@ alias tt='toggle_transparency'
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 
 # git
+gd () {
+  if [[ "$1" == "" ]]; then
+    GD_PATH=""
+  else GD_PATH=$1
+  fi
+  git diff -- ':!*lock*' ${GD_PATH} 
+}
+gds () {
+  if [[ "$1" == "" ]]; then
+    GD_PATH=""
+  else GD_PATH=$1
+  fi
+  git diff --staged -- ':!*lock*' ${GD_PATH}
+}
+gcfc () {
+  git checkout $(git log --format=reference | fzf | awk '{ print $1 }')
+}
+gcf () {
+  git log --format=reference | fzf | awk '{ print $1 }'
+}
+grevf () {
+  git revert $(git log --format=reference | fzf | awk '{ print $1 }')
+}
 gbf () {
   git checkout $(git branch -a | grep -v 'HEAD' | grep -v '*' | awk -F'remotes/origin/' 'NF==2{ print $2 }; NF==1{ print $1 }' | tr -d ' ' |  sort | uniq | fzf)
 }
@@ -144,6 +167,9 @@ gwa () {
 
   git worktree add "$REPOS/$(basename `git rev-parse --show-toplevel`)-$WT_NAME" "$BRANCH"
 }
+gwf () {
+  cd $(gwl | fzf | awk '{ print $1 }')
+}
 alias cdg='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
 alias gb='git checkout'
 alias gbn='git checkout -b'
@@ -151,10 +177,8 @@ alias gbd='git checkout $(git remote show origin | grep HEAD | cut -d: -f2 | tr 
 alias gbc='git branch --show-current'
 alias gs='git status'
 alias ga='git add'
-alias gap='git add --patch'
-alias gac='git add .'
-alias gapc='git add . --patch'
 alias gaa='git add -A'
+alias gap='git add --patch'
 alias gp='git pull'
 alias gpc='git pull origin $(git branch --show-current)'
 alias gpd='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
@@ -171,18 +195,19 @@ alias gss='git stash'
 alias gssp='git stash pop'
 alias gssP='git stash push'
 alias gssl='git stash list'
-alias gd='git diff'
-alias gds='git diff --staged'
 alias gl='git log'
 alias gr='git restore'
+alias grs='git restore --staged'
+alias grev='git revert'
 alias gR='git reset'
+alias gtf='git checkout $(git tag | fzf)'
 
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
 alias valias='nvim $DOTFILES/zsh/aliases.zsh'
 
 # tmux aliases
-alias tms='tmux source ~/.tmux.conf'
+alias ts'tmux source ~/.tmux.conf'
 alias tm='tmux new-session -A -D -s'
 alias tmm='tm main'
 alias tms='tmux-sessionizer'
@@ -196,9 +221,11 @@ alias kn='kubens'
 # Terra aliases
 alias tei="te init"
 alias tep="te plan"
+alias tec="te console"
 alias teri="te run-all init"
 alias terp="te run-all plan"
 alias ti="t init"
 alias tp="t plan"
+alias tc="t console"
 alias tri="t run-all init"
 alias trp="t run-all plan"
