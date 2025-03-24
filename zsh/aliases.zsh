@@ -200,6 +200,7 @@ alias gr='git restore'
 alias grs='git restore --staged'
 alias grev='git revert'
 alias gR='git reset'
+alias gR1='git reset HEAD~'
 alias gtf='git checkout $(git tag | fzf)'
 
 alias s='source ~/.zshrc'
