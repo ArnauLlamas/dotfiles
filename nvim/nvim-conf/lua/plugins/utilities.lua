@@ -14,6 +14,25 @@ return {
 		config = true,
 	},
 	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				keymaps = {
+					insert = "ss",
+					insert_line = "SS",
+					normal = "ss",
+					normal_line = "SS",
+					visual = "ss",
+					visual_line = "SS",
+					delete = "ds",
+					change = "cs",
+					change_line = "cS",
+				},
+			})
+		end,
+	},
+	{
 		"echasnovski/mini.ai",
 		version = "*",
 		config = function()
