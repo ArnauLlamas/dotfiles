@@ -36,14 +36,6 @@ do
   source_if_exists "${HOME}/.creds/${file}"
 done
 
-## System specifics sourcing
-if [[ "$(uname)" == "Linux" ]]; then
-  source $HOME/.asdf/asdf.sh
-elif [[ "$(uname)" == "Darwin" ]]; then
-  source /opt/homebrew/opt/asdf/libexec/asdf.sh
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
 
@@ -153,6 +145,5 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Shell integrations
-source <(just --completions=zsh)
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
