@@ -6,12 +6,13 @@ return {
 			"giuxtaposition/blink-cmp-copilot",
 		},
 
-		version = "*",
+		version = "1.*",
 
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
 		opts = {
 			keymap = {
 				preset = "default",
-				-- keymap = { ["<CR>"] = { "select_and_accetp", "fallback" } },
 			},
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer", "copilot" },
@@ -19,7 +20,7 @@ return {
 					copilot = {
 						name = "copilot",
 						module = "blink-cmp-copilot",
-						score_offset = 100,
+						score_offset = 5,
 						async = true,
 						transform_items = function(_, items)
 							local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
@@ -34,7 +35,8 @@ return {
 				},
 			},
 			appearance = {
-				use_nvim_cmp_as_default = true,
+				highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
+				use_nvim_cmp_as_default = false,
 				nerd_font_variant = "mono",
 
 				kind_icons = {
@@ -73,6 +75,8 @@ return {
 			},
 			signature = { enabled = true },
 			completion = { documentation = { auto_show = true } },
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
+		opts_extend = { "sources.default" },
 	},
 }
