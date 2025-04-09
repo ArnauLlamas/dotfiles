@@ -38,7 +38,7 @@ return {
 				nerd_font_variant = "mono",
 
 				kind_icons = {
-					Copilot = "",
+					Copilot = "",
 					Text = "󰉿",
 					Method = "󰊕",
 					Function = "󰊕",
