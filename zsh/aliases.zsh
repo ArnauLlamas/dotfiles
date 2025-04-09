@@ -142,6 +142,9 @@ gcfc () {
 gcf () {
   git log --format=reference | fzf | awk '{ print $1 }'
 }
+gpickf () {
+  git cherry-pick $(git log --branches --format=reference | fzf | awk '{ print $1 }')
+}
 grevf () {
   git revert $(git log --format=reference | fzf | awk '{ print $1 }')
 }
