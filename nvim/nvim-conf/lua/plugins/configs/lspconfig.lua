@@ -105,7 +105,7 @@ local servers = {
 }
 
 -- blink.cmp capabilities
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities(nil, true)
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
