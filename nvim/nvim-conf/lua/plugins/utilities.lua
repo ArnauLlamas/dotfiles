@@ -19,8 +19,6 @@ return {
 		config = function()
 			require("nvim-surround").setup({
 				keymaps = {
-					insert = "ss",
-					insert_line = "SS",
 					normal = "ss",
 					normal_line = "SS",
 					visual = "ss",
