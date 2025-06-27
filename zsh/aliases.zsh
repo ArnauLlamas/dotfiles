@@ -121,6 +121,10 @@ alias tt='toggle_transparency'
 # gh
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 
+# github
+openpr () {
+  open "$(git remote get-url origin | sed 's/\.git//g')/pull/new/$(git branch --show-current)"
+}
 # git
 gd () {
   if [[ "$1" == "" ]]; then
@@ -183,6 +187,7 @@ alias ga='git add'
 alias gaa='git add -A'
 alias gap='git add --patch'
 alias gp='git pull'
+alias gbdp='gbd && gp'
 alias gpc='git pull origin $(git branch --show-current)'
 alias gpd='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
 alias gcm='git commit -m'
