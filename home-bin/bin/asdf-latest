@@ -1,0 +1,40 @@
+#!/bin/bash
+
+PLUGIN=$1
+FILE_PATH=$2
+
+if [ -z "$PLUGIN" ]; then
+	echo "Usage: $(basename "$0") <plugin> [<directory>|current working directory]"
+	exit 1
+fi
+
+if [ -z "$FILE_PATH" ]; then
+	FILE_PATH="$PWD"
+fi
+
+if ! asdf latest "$PLUGIN" &>/dev/null; then
+	printf "Something went wrong while checking the latest version of %s. ASDF error:\n\n" "$PLUGIN"
+	asdf latest "$PLUGIN"
+	exit 1
+fi
+
+VERSION=$(asdf latest "$PLUGIN")
+TOOL_VERSIONS_FILE="${FILE_PATH}/.tool-versions"
+STRING=$(grep "$PLUGIN" "$TOOL_VERSIONS_FILE")
+REPLACEMENT="$(grep "$PLUGIN" "$TOOL_VERSIONS_FILE") $VERSION"
+
+# If the version is already in the file along the plugin, do nothing
+if grep "$PLUGIN" "${FILE_PATH}/.tool-versions" | grep -q "$VERSION"; then
+	echo "Version $VERSION for plugin $PLUGIN is already set in ${FILE_PATH}/.tool-versions"
+	exit 0
+fi
+
+# If MacOS, use gsed instead of sed
+if [[ "$(uname)" == "Darwin" ]]; then
+	SED="gsed"
+else
+	SED="sed"
+fi
+
+$SED -i "s/$STRING/$REPLACEMENT/g" "$TOOL_VERSIONS_FILE"
+echo "Added version $VERSION for plugin $PLUGIN to ${FILE_PATH}/.tool-versions"
