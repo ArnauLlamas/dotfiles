@@ -51,6 +51,9 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+-- Disable line wrapping
+vim.opt.wrap = false
+
 vim.opt.smartindent = true
 
 vim.opt.scrolloff = 8

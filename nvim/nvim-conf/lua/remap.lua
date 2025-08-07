@@ -49,3 +49,20 @@ vim.keymap.set("i", "jj", "<ESC>")
 -- Tabbing in visual mode with Tab
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
+
+-- Toggle line wrapping
+vim.keymap.set("n", "<leader>tw", function()
+	if vim.wo.wrap then
+		vim.wo.wrap = false
+		print("Line wrapping disabled")
+	else
+		vim.wo.wrap = true
+		print("Line wrapping enabled")
+	end
+end, { desc = "Toggle [T]ext [W]rapping" })
+
+-- Save without autoformatting
+vim.keymap.set("n", "<leader>w", function()
+	vim.cmd("noautocmd write")
+	print("File saved without autoformatting")
+end, { desc = "[W]rite file without autoformatting" })
