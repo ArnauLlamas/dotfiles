@@ -20,8 +20,8 @@ fi
 
 VERSION=$(asdf latest "$PLUGIN")
 TOOL_VERSIONS_FILE="${FILE_PATH}/.tool-versions"
-STRING=$(grep "$PLUGIN" "$TOOL_VERSIONS_FILE")
-REPLACEMENT="$(grep "$PLUGIN" "$TOOL_VERSIONS_FILE") $VERSION"
+STRING=$(grep "$PLUGIN " "$TOOL_VERSIONS_FILE")
+REPLACEMENT="$(grep "$PLUGIN " "$TOOL_VERSIONS_FILE") $VERSION"
 
 # If the version is already in the file along the plugin, do nothing
 if grep "$PLUGIN" "${FILE_PATH}/.tool-versions" | grep -q "$VERSION"; then
