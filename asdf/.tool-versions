@@ -1,19 +1,19 @@
 flutter 3.32.1-stable
 gum 0.10.0
-terraform 1.5.7
-terragrunt 0.73.15 0.51.4
-tflint 0.46.0
+terraform 1.13.5
+terragrunt 0.93.9
+tflint 0.60.0
 kubectl 1.27.11
 kind 0.22.0
 helm 3.16.3
-nodejs 20.10.0
+nodejs 20.10.0 24.4.1
 yq 4.45.1
 github-cli 2.69.0
 act 0.2.49
 rust 1.82.0
 golang 1.21.4
-trivy 0.60.0
-pre-commit 3.2.2
+trivy 0.67.2
+pre-commit 4.4.0
 pnpm 8.13.1
 jq 1.6 1.7
-opentofu 1.6.2
+opentofu 1.10.7
