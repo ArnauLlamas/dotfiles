@@ -1,5 +1,6 @@
-import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+[general]
 live_config_reload = true
+import = ["~/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 
 [env]
 TERM = "tmux-256color"
@@ -43,3 +44,4 @@ opacity = 1
 [window.padding]
 x = 0
 y = 0
+
