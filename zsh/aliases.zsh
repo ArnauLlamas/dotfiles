@@ -62,23 +62,17 @@ function top-pods-ram() {
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/arnau/.asdf/installs/opentofu/1.6.2/bin/tofu tofu
 
-# Opentofu/Terragrunt
-function to() {
-  if [[ -f "terragrunt.hcl" || "$1" == "run-all" ]]
-  then
-    command terragrunt "$@"
-  else
-    command tofu "$@"
-  fi
-}
-
-# Terra{form,grunt}
+# OpenTofu/Terraform/Terragrunt
 function t() {
-  if [[ -f "terragrunt.hcl" || "$1" == "run-all" ]]
+  if [[ -f "terragrunt.hcl" || "$1" == "run" || "$1" == "run-all" ]]
   then
-    command terragrunt "$@"
+    command terragrunt run --provider-cache -- "$@"
   else
-    command terraform "$@"
+    if ! tofu version &> /dev/null; then
+      command terraform "$@"
+    else
+      command tofu "$@"
+    fi
   fi
 }
 
@@ -191,6 +185,7 @@ alias gbdp='gbd && gp'
 alias gpc='git pull origin $(git branch --show-current)'
 alias gpd='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
 alias gcm='git commit -m'
+alias gcmfb='git commit -m "$(git branch --show-current | cut -d"/" -f1)($(git branch --show-current | cut -d"/" -f2)): $(git branch --show-current | cut -d"/" -f3 | sed "s/-/ /g")"'
 alias gcempty='git commit --allow-empty --allow-empty-message'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
@@ -210,6 +205,7 @@ alias grev='git revert'
 alias gR='git reset'
 alias gR1='git reset HEAD~'
 alias gtf='git checkout $(git tag | fzf)'
+alias gflow='gaa && gcmfb && gP && openpr'
 
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
@@ -228,13 +224,11 @@ alias kx='kubectx'
 alias kn='kubens'
 
 # Terra aliases
-alias tei="te init"
-alias tep="te plan"
-alias tec="te console"
-alias teri="te run-all init"
-alias terp="te run-all plan"
 alias ti="t init"
 alias tp="t plan"
+alias ta="t apply"
 alias tc="t console"
-alias tri="t run-all init"
-alias trp="t run-all plan"
+alias tia="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- init "
+alias tva="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- validate"
+alias tpa="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- plan"
+alias taa="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- apply"
