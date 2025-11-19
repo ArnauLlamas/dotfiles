@@ -42,14 +42,18 @@ return {
 		nmap("<leader><space>", builtin.buffers, "[ ] Find existing buffers")
 		nmap("<leader>fc", builtin.current_buffer_fuzzy_find, "[F]ind in [C]urrent buffer")
 		nmap("<leader>ff", builtin.find_files, "[F]ind [F]iles")
+		nmap("<leader>fr", builtin.resume, "[F]ind [R]esume")
 		nmap("<leader>fF", builtin.git_files, "[F]ind [F]iles from git root")
 		nmap("<leader>fb", builtin.builtin, "[F]ind Telescope [B]uiltins")
 		nmap("<leader>fh", builtin.help_tags, "[F]ind [H]elp [T]ags")
+		nmap("<leader>fa", builtin.git_status, "[F]ind git St[a]tus files")
 		nmap("<leader>fw", builtin.grep_string, "[F]ind current [W]ord")
 		nmap("<leader>fg", multigrep.live_multigrep, "[F]ind [G]rep")
 		nmap("<leader>fG", function()
 			multigrep.live_multigrep({ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] })
 		end, "[F]ind [G]rep from git root")
+		nmap("<leader>flr", builtin.lsp_references, "[F]ind [L]sp [R]eferences")
+		nmap("<leader>fli", builtin.lsp_implementations, "[F]ind [L]sp [I]mplementations")
 
 		-- LSP specifics
 		nmap("<leader>ft", builtin.treesitter, "[F]ind [T]reesitter symbols")

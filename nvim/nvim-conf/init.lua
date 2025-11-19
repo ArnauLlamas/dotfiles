@@ -33,4 +33,6 @@ require("lazy").setup({
 	checker = { enabled = false },
 	change_detection = { enabled = false },
 })
+
+require("plugins.configs.lsp")
 -- vim: ts=2 sts=2 sw=2 et

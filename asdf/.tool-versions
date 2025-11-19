@@ -6,7 +6,7 @@ tflint 0.60.0
 kubectl 1.27.11
 kind 0.22.0
 helm 3.16.3
-nodejs 20.10.0 24.4.1
+nodejs 22.21.1
 yq 4.45.1
 github-cli 2.69.0
 act 0.2.49

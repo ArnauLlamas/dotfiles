@@ -27,9 +27,78 @@ vim.api.nvim_create_user_command("FormattingEnable", function()
 end, {})
 
 local none_ls = require("null-ls")
+local h = require("null-ls.helpers")
+
+local trivy_local = h.make_builtin({
+	name = "trivy_local",
+	method = none_ls.methods.DIAGNOSTICS_ON_SAVE,
+	filetypes = { "terraform", "tf" },
+	generator_opts = {
+		command = "trivy",
+		timeout = 30000,
+		args = h.cache.by_bufnr(function(params)
+			local trivy_args = {
+				"config",
+				"--config",
+				-- vim.fs.find("trivy.yaml", {
+				--   path = params.bufname,
+				--   upward = true,
+				--   stop = vim.fs.dirname(os.getenv("$HOME"))
+				-- }),
+				vim.fn.expand("~/trivy.yaml"),
+				"--format",
+				"json",
+				"--quiet",
+				"$DIRNAME",
+			}
+
+			return trivy_args
+		end),
+		format = "json",
+		to_stdin = false,
+		from_stderr = false,
+
+		on_output = function(params)
+			local diagnostics = {}
+
+			if not params.output or not params.output.Results then
+				return diagnostics
+			end
+
+			for _, result in ipairs(params.output.Results) do
+				if result.Misconfigurations then
+					for _, misconf in ipairs(result.Misconfigurations) do
+						local line = misconf.CauseMetadata and misconf.CauseMetadata.StartLine or 1
+
+						local severity_map = {
+							LOW = 4,
+							MEDIUM = 3,
+							HIGH = 2,
+							CRITICAL = 1,
+						}
+
+						table.insert(diagnostics, {
+							row = line,
+							col = 1,
+							message = misconf.Message or misconf.Description,
+							code = misconf.ID,
+							severity = severity_map[misconf.Severity] or 2,
+							source = "trivy",
+						})
+					end
+				end
+			end
+
+			return diagnostics
+		end,
+	},
+	factory = h.generator_factory,
+})
 
 local opts = {
 	sources = {
+		-- Trivy Local
+		trivy_local,
 		-- Python
 		none_ls.builtins.formatting.black,
 		-- Go
@@ -42,8 +111,7 @@ local opts = {
 		-- Terraform
 		none_ls.builtins.formatting.terraform_fmt,
 		-- none_ls.builtins.diagnostics.terraform_validate,
-		none_ls.builtins.diagnostics.tfsec,
-		none_ls.builtins.diagnostics.trivy,
+		-- none_ls.builtins.diagnostics.trivy,
 		-- Godot
 		none_ls.builtins.diagnostics.gdlint.with({
 			filetypes = { "gd", "gdscript", "gdscript3" },
@@ -54,7 +122,7 @@ local opts = {
 		none_ls.builtins.diagnostics.hadolint,
 		none_ls.builtins.diagnostics.actionlint.with({
 			runtime_condition = function(params)
-				return params.bufname:find(vim.pesc(".github/workflows")) ~= nil
+				return params.bufname:find(vim.pesc(".github/workflows/")) ~= nil
 			end,
 		}),
 		none_ls.builtins.formatting.yamlfmt,
