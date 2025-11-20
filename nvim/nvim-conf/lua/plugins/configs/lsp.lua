@@ -37,7 +37,6 @@ local tools = {
 	"iferr",
 	"impl",
 	"debugpy",
-	"selene",
 }
 
 vim.api.nvim_create_user_command("MasonInstallTools", function()
