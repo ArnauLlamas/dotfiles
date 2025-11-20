@@ -51,6 +51,9 @@ require("mason-lspconfig").setup({
 
 require("plugins.configs.none-ls")
 
+-- Setup Trivy workspace-wide diagnostics
+require("plugins.configs.trivy-lsp").setup()
+
 vim.lsp.config("terraformls", {
 	filetypes = { "terraform", "terraform-vars", "hcl" },
 })
