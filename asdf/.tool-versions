@@ -10,7 +10,7 @@ nodejs 22.21.1
 yq 4.45.1
 github-cli 2.69.0
 act 0.2.49
-rust 1.82.0
+rust 1.91.0
 golang 1.21.4
 trivy 0.67.2
 pre-commit 4.4.0
