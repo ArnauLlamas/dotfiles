@@ -71,6 +71,15 @@ if vim.fn.isdirectory(vim.fn.expand("$PERSONAL") .. "/" .. testing_lsp) == 1 the
 	vim.lsp.enable(testing_lsp)
 end
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client and client.name == "terraformls" then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
+	end,
+})
+
 local nmap = function(keys, func, desc)
 	if desc then
 		desc = "LSP: " .. desc
