@@ -26,6 +26,8 @@ export GOPATH="${HOME}/go"
 
 export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$HOME/.fzf/bin:$GOPATH/bin:$HOME/.cargo/bin
 
+eval "$(mise activate zsh)"
+
 # Custom sourcing
 source_if_exists $HOME/.env.sh
 source_if_exists $DOTFILES/zsh/aliases.zsh
@@ -93,7 +95,6 @@ else
 fi
 
 zinit snippet OMZP::aws
-zinit snippet OMZP::asdf
 zinit snippet OMZP::terraform
 zinit snippet OMZP::brew
 zinit snippet OMZP::golang

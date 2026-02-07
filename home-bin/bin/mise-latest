@@ -12,13 +12,13 @@ if [ -z "$FILE_PATH" ]; then
 	FILE_PATH="$PWD"
 fi
 
-if ! asdf latest "$PLUGIN" &>/dev/null; then
-	printf "Something went wrong while checking the latest version of %s. ASDF error:\n\n" "$PLUGIN"
-	asdf latest "$PLUGIN"
+if ! mise latest "$PLUGIN" &>/dev/null; then
+	printf "Something went wrong while checking the latest version of %s. Mise error:\n\n" "$PLUGIN"
+	mise latest "$PLUGIN"
 	exit 1
 fi
 
-VERSION=$(asdf latest "$PLUGIN")
+VERSION=$(mise latest "$PLUGIN")
 TOOL_VERSIONS_FILE="${FILE_PATH}/.tool-versions"
 STRING=$(grep "$PLUGIN " "$TOOL_VERSIONS_FILE")
 REPLACEMENT="$(grep "$PLUGIN " "$TOOL_VERSIONS_FILE") $VERSION"
