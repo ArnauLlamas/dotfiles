@@ -16,4 +16,3 @@ trivy 0.67.2
 pre-commit 4.4.0
 pnpm 8.13.1
 jq 1.6 1.7
-opentofu 1.10.7

@@ -60,7 +60,6 @@ function top-pods-ram() {
 }
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/arnau/.asdf/installs/opentofu/1.6.2/bin/tofu tofu
 
 # OpenTofu/Terraform/Terragrunt
 function t() {
@@ -125,7 +124,7 @@ gd () {
     GD_PATH=":!*lock*"
   else GD_PATH=$1
   fi
-  git diff -- ${GD_PATH} 
+  git diff -- ${GD_PATH}
 }
 gds () {
   if [[ "$1" == "" ]]; then
