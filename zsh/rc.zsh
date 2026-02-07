@@ -146,4 +146,3 @@ zmodload zsh/complist
 
 # Shell integrations
 source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
