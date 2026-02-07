@@ -1,11 +1,11 @@
-flutter 3.32.1-stable
+# flutter 3.32.1-stable
 gum 0.10.0
 terraform 1.13.5
 terragrunt 0.93.9
 tflint 0.60.0
 kubectl 1.27.11
 kind 0.22.0
-helm 3.16.3
+helm 3.18.4
 nodejs 22.21.1
 yq 4.45.1
 github-cli 2.69.0
