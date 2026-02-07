@@ -1,1 +1,1 @@
-$DOTFILES/mise/.tool-versions=$HOME/.tool-versions
+$DOTFILES/mise/config.toml=$HOME/.config/mise/config.toml

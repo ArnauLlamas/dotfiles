@@ -1,0 +1,20 @@
+[tools]
+# Required for mise completions
+usage = "latest"
+
+terraform = "1"
+terragrunt = "0.99.1"
+tflint = "latest"
+trivy = "latest"
+kubectl = "1.27.11"
+kind = "0.22.0"
+helm = "3"
+rust = "1.91.0"
+golang = "1.21.4"
+nodejs = "24"
+pnpm = "latest"
+jq = "latest"
+yq = "latest"
+pre-commit = "4"
+github-cli = "2"
+gum = "0.17.0"
