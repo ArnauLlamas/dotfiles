@@ -111,6 +111,14 @@ fi
 alias yl='yq -C | less -R'
 alias tt='toggle_transparency'
 
+difff () {
+  diff --recursive -u "$1" "$2" | diff-so-fancy | less -R
+}
+
+difffx () {
+  diff --recursive -u --exclude "$3" "$1" "$2" | diff-so-fancy | less -R
+}
+
 # gh
 alias ghlogin='gh auth login --hostname github.com --web --git-protocol https'
 
@@ -183,6 +191,8 @@ alias gp='git pull'
 alias gbdp='gbd && gp'
 alias gpc='git pull origin $(git branch --show-current)'
 alias gpd='git pull origin $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
+alias gmd='git merge $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")'
+alias ggc='git gc'
 alias gcm='git commit -m'
 alias gcmfb='git commit -m "$(git branch --show-current | cut -d"/" -f1)($(git branch --show-current | cut -d"/" -f2)): $(git branch --show-current | cut -d"/" -f3 | sed "s/-/ /g")"'
 alias gcempty='git commit --allow-empty --allow-empty-message'
@@ -204,7 +214,24 @@ alias grev='git revert'
 alias gR='git reset'
 alias gR1='git reset HEAD~'
 alias gtf='git checkout $(git tag | fzf)'
-alias gflow='gaa && gcmfb && gP && openpr'
+
+gflow () {
+  if [[ "$1" != "" ]]
+  then
+    gbn "$1" && gap && gcmfb && gP && openpr
+  else
+    gap && gcmfb && gP && openpr
+  fi
+}
+
+gflowa () {
+  if [[ "$1" != "" ]]
+  then
+    gbn "$1" && gaa && gcmfb && gP && openpr
+  else
+    gaa && gcmfb && gP && openpr
+  fi
+}
 
 alias s='source ~/.zshrc'
 alias vzshrc='nvim ~/.zshrc'
@@ -227,7 +254,12 @@ alias ti="t init"
 alias tp="t plan"
 alias ta="t apply"
 alias tc="t console"
+alias tpl="t providers lock -platform=linux_amd64 -platform=linux_arm64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=windows_amd64"
+alias ttpl="terragrunt run -- providers lock -platform=linux_amd64 -platform=linux_arm64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=windows_amd64"
 alias tia="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- init "
+alias ttia="terragrunt run --all --fail-fast --no-auto-retry -- init "
+alias tpla="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- providers lock -platform=linux_amd64 -platform=linux_arm64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=windows_amd64"
+alias ttpla="terragrunt run --all --fail-fast --no-auto-retry -- providers lock -platform=linux_amd64 -platform=linux_arm64 -platform=darwin_amd64 -platform=darwin_arm64 -platform=windows_amd64"
 alias tva="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- validate"
 alias tpa="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- plan"
 alias taa="terragrunt run --all --fail-fast --no-auto-retry --provider-cache -- apply"
