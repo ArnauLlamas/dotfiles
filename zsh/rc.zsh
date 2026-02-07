@@ -28,6 +28,12 @@ export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/sha
 
 eval "$(mise activate zsh)"
 
+# opencode
+export PATH=$PATH:$HOME/.opencode/bin
+
+# LM Studio
+export PATH="$PATH:$HOME/.lmstudio/bin"
+
 # Custom sourcing
 source_if_exists $HOME/.env.sh
 source_if_exists $DOTFILES/zsh/aliases.zsh
