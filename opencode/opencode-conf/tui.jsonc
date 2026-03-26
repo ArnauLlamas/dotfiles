@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+
+  // UI theme
+  "theme": "catppuccin",
+
+  // Scroll acceleration (overrides scroll_speed)
+  "scroll_acceleration": {
+    "enabled": true
+  },
+
+  // Diff layout: auto adapts to terminal width
+  "diff_style": "auto"
+}

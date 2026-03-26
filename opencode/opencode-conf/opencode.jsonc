@@ -1,0 +1,51 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Default model to use
+  "model": "github-copilot/claude-sonnet-4-6",
+
+  // Lightweight model for tasks like title generation
+  "small_model": "github-copilot/claude-haiku-4-5",
+
+  // Automatically install updates on startup
+  "autoupdate": true,
+
+  // Keep snapshots enabled for undo/redo support
+  "snapshot": true,
+
+  // Disable session sharing
+  "share": "disabled",
+
+  // Require approval before running bash commands
+  "permission": {
+    "bash": "ask"
+  },
+
+  // Context compaction settings
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+
+  // Local models via LM Studio (OpenAI-compatible, runs on http://127.0.0.1:1234)
+  // LM Studio must be running with a model loaded for these to work.
+  // Model IDs must match exactly what LM Studio reports — update as needed.
+  // Switch to a local model with /models inside OpenCode.
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
+      "models": {
+        "qwen/qwen3-8b": {
+          "name": "Qwen3 8B (local)"
+        },
+        "qwen3.5-27b-claude-4.6-opus-reasoning-distilled": {
+          "name": "Qwen3.5 27B Claude-Opus Distilled (local)"
+        }
+      }
+    }
+  }
+}

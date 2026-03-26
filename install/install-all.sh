@@ -12,6 +12,7 @@ zsh starship/install.sh
 zsh mise/install.sh
 zsh alacritty/install.sh
 zsh tmux/install.sh
+zsh opencode/install.sh
 
 # Creates links through links.prop files
 ./install/bootstrap.sh
