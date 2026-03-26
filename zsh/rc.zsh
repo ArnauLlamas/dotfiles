@@ -24,7 +24,8 @@ export PERSONAL=$HOME/Documents/personal
 
 export GOPATH="${HOME}/go"
 
-export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$HOME/.fzf/bin:$GOPATH/bin:$HOME/.cargo/bin
+# export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$HOME/.fzf/bin:$GOPATH/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
 
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"

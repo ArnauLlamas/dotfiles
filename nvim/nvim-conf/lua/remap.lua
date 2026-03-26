@@ -41,6 +41,16 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<Tab>", "<cmd>wincmd w<CR>", { desc = "Move to next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>wincmd W<CR>", { desc = "Move to previous buffer" })
 
+-- vim.keymap.set("n", "<C-S-Left>", ":vertical resize +1<CR>", { desc = "resize pane to the left" })
+-- vim.keymap.set("n", "<C-S-Right>", ":vertical resize -1<CR>", { desc = "resize pane to the right" })
+-- vim.keymap.set("n", "<C-S-Up>", ":resize +1<CR>", { desc = "resize pane up" })
+-- vim.keymap.set("n", "<C-S-Down>", ":resize -1<CR>", { desc = "resize pane down" })
+
+vim.keymap.set("n", "<C-S-Left>", "<C-w>>", { desc = "resize pane to the left" })
+vim.keymap.set("n", "<C-S-Right>", "<C-w><", { desc = "resize pane to the right" })
+vim.keymap.set("n", "<C-S-Up>", "<C-w>+", { desc = "resize pane up" })
+vim.keymap.set("n", "<C-S-Down>", "<C-w>-", { desc = "resize pane down" })
+
 vim.keymap.set("n", "<leader>ss", "<cmd>vertical split<CR>", { desc = "[S]plit" })
 vim.keymap.set("n", "<leader>sv", "<cmd>vertical split<CR>", { desc = "[S]plit [V]ertical" })
 vim.keymap.set("n", "<leader>sh", "<cmd>horizontal new<CR>", { desc = "[S]plit [H]orizontal" })
