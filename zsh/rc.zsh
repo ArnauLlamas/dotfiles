@@ -29,6 +29,7 @@ export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:
 
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
+eval "$(opencode completion zsh)"
 
 # opencode
 export PATH=$PATH:$HOME/.opencode/bin

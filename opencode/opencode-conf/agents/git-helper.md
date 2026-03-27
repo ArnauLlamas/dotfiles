@@ -4,12 +4,8 @@ mode: subagent
 permission:
   edit: deny
   bash:
-    "*": deny
-    "git log*": allow
-    "git diff*": allow
-    "git status*": allow
-    "git show*": allow
-    "git branch*": allow
+    "git *": allow
+    "git push*": deny
   webfetch: deny
 ---
 

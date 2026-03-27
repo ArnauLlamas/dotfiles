@@ -2,10 +2,10 @@
   "$schema": "https://opencode.ai/config.json",
 
   // Default model to use
-  "model": "github-copilot/claude-sonnet-4-6",
+  "model": "github-copilot/claude-sonnet-4.6",
 
   // Lightweight model for tasks like title generation
-  "small_model": "github-copilot/claude-haiku-4-5",
+  "small_model": "github-copilot/claude-haiku-4.5",
 
   // Automatically install updates on startup
   "autoupdate": true,
@@ -25,6 +25,17 @@
   "compaction": {
     "auto": true,
     "prune": true
+  },
+
+  // File watcher ignore patterns — explicit list to avoid accidentally ignoring too much
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      ".git/**",
+      "**/.terraform/**",
+      "**/.terragrunt-cache/**",
+      "**/.terragrunt-stack/**"
+    ]
   },
 
   // Local models via LM Studio (OpenAI-compatible, runs on http://127.0.0.1:1234)
