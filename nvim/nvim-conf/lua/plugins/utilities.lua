@@ -16,19 +16,15 @@ return {
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({
-				keymaps = {
-					normal = "ss",
-					normal_line = "SS",
-					visual = "ss",
-					visual_line = "SS",
-					delete = "ds",
-					change = "cs",
-					change_line = "cS",
-				},
-			})
-		end,
+		-- config = function()
+		-- 	vim.keymap.set("n", "ss", "<Plug>(nvim-surround-normal)")
+		-- 	vim.keymap.set("n", "sS", "<Plug>(nvim-surround-normal-line)")
+		-- 	vim.keymap.set("v", "ss", "<Plug>(nvim-surround-visual)")
+		-- 	vim.keymap.set("v", "SS", "<Plug>(nvim-surround-visual-line)")
+		-- 	vim.keymap.set("n", "ds", "<Plug>(nvim-surround-delete)")
+		-- 	vim.keymap.set("n", "cs", "<Plug>(nvim-surround-change)")
+		-- 	vim.keymap.set("n", "cS", "<Plug>(nvim-surround-change-line)")
+		-- end,
 	},
 	{
 		"echasnovski/mini.ai",

@@ -25,7 +25,7 @@ return {
 						name = "tmux",
 						-- default options
 						opts = {
-							all_panes = false,
+							panels = false,
 							capture_history = false,
 							-- only suggest completions from `tmux` if the `trigger_chars` are used
 							triggered_only = true,
