@@ -27,25 +27,11 @@ export GOPATH="${HOME}/go"
 # export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$HOME/.fzf/bin:$GOPATH/bin:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
 
-eval "$(mise activate zsh)"
-eval "$(mise completion zsh)"
-eval "$(opencode completion zsh)"
-
 # opencode
 export PATH=$PATH:$HOME/.opencode/bin
 
 # LM Studio
 export PATH="$PATH:$HOME/.lmstudio/bin"
-
-# Custom sourcing
-source_if_exists $HOME/.env.sh
-source_if_exists $DOTFILES/zsh/aliases.zsh
-
-# Creds sourcing
-for file in $(ls $HOME/.creds)
-do
-  source_if_exists "${HOME}/.creds/${file}"
-done
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
@@ -156,3 +142,16 @@ zmodload zsh/complist
 
 # Shell integrations
 source <(fzf --zsh)
+eval "$(mise activate zsh)"
+eval "$(mise completion zsh)"
+eval "$(opencode completion zsh)"
+
+# Custom sourcing
+source_if_exists $HOME/.env.sh
+source_if_exists $DOTFILES/zsh/aliases.zsh
+
+# Creds sourcing
+for file in $(ls $HOME/.creds)
+do
+  source_if_exists "${HOME}/.creds/${file}"
+done
