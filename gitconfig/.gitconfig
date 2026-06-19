@@ -1,6 +1,13 @@
 [user]
 	name = Arnau Llamas
 	email = arnau.llamas@gmail.com
+	signingkey = ~/.ssh/github-signing.pub
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
 
 [init]
 	defaultBranch = main
