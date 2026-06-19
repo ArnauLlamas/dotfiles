@@ -1,0 +1,3 @@
+[submodule "opencode/opencode-conf/skills/terraform-skill"]
+	path = opencode/opencode-conf/skills/terraform-skill
+	url = https://github.com/antonbabenko/terraform-skill
