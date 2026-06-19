@@ -6,11 +6,11 @@ neovim = "stable"
 opencode = "latest"
 
 terraform = "1"
-terragrunt = "latest"
+terragrunt = "1"
 tflint = "latest"
 trivy = "latest"
 
-kind = "0.22.0"
+kind = "0.31.0"
 kubectl = "latest"
 kubectx = "latest"
 kubens = "latest"
@@ -30,3 +30,32 @@ pre-commit = "4"
 gh = "2"
 gum = "0.17.0"
 difftastic = "latest"
+
+[hooks]
+postinstall = '''
+#!/usr/bin/env bash
+set -euo pipefail
+COMP_DIR="$HOME/.config/mise/completions"
+mkdir -p "$COMP_DIR"
+
+echo "$MISE_INSTALLED_TOOLS" | jq -r '.[].name' | while read -r tool; do
+  bin=$(mise which "$tool" 2>/dev/null) || continue
+  outfile="$COMP_DIR/_${tool}"
+
+  if "$bin" completion zsh &>/dev/null 2>&1; then
+    "$bin" completion zsh > "$outfile" && echo "mise: wrote zsh completions for $tool"
+  elif "$bin" completions zsh &>/dev/null 2>&1; then
+    "$bin" completions zsh > "$outfile" && echo "mise: wrote zsh completions for $tool"
+  fi
+done
+'''
+
+[hooks.enter]
+shell = "zsh"
+script = '''
+COMP_DIR="$HOME/.config/mise/completions"
+[[ -d "$COMP_DIR" ]] && fpath=("$COMP_DIR" $fpath) && autoload -Uz compinit && compinit -C
+'''
+
+[settings]
+experimental = true
