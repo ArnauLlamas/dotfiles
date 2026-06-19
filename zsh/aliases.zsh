@@ -109,6 +109,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   alias sed='gsed'
 fi
 alias yl='yq -C | less -R'
+alias jl='jq -C | less -R'
 alias tt='toggle_transparency'
 
 difff () {
@@ -140,6 +141,28 @@ gds () {
   else GD_PATH=$1
   fi
   git diff --staged -- ${GD_PATH}
+}
+grev1 () {
+  if [[ "$1" == "" ]]; then
+    echo "Provide a file to reverse the last commit for"
+    break
+  fi
+
+  git show HEAD -- "$1" | git apply -R
+}
+gdnoext () {
+  if [[ "$1" == "" ]]; then
+    GD_PATH=":!*lock*"
+  else GD_PATH=$1
+  fi
+  git diff --no-ext-diff -- ${GD_PATH}
+}
+gdsnoext () {
+  if [[ "$1" == "" ]]; then
+    GD_PATH=":!*lock*"
+  else GD_PATH=$1
+  fi
+  git diff --no-ext-diff --staged -- ${GD_PATH}
 }
 gcfc () {
   git checkout $(git log --format=reference | fzf | awk '{ print $1 }')
@@ -178,6 +201,7 @@ gwa () {
 gwf () {
   cd $(gwl | fzf | awk '{ print $1 }')
 }
+alias ssh-add-github-signing='ssh-add ~/.ssh/github-signing -t 43200' # 12h
 alias cdg='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
 alias gb='git checkout'
 alias gbn='git checkout -b'
@@ -195,6 +219,7 @@ alias gmd='git merge $(git remote show origin | grep HEAD | cut -d: -f2 | tr -d 
 alias ggc='git gc'
 alias gcm='git commit -m'
 alias gcmfb='git commit -m "$(git branch --show-current | cut -d"/" -f1)($(git branch --show-current | cut -d"/" -f2)): $(git branch --show-current | cut -d"/" -f3 | sed "s/-/ /g")"'
+alias gcmfbt='git commit -m "$(git branch --show-current | cut -d"/" -f1): $(git branch --show-current | cut -d"/" -f2)($(git branch --show-current | cut -d"/" -f3)): $(git branch --show-current | cut -d"/" -f4 | sed "s/-/ /g")"'
 alias gcempty='git commit --allow-empty --allow-empty-message'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
