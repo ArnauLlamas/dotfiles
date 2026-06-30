@@ -13,6 +13,10 @@ Do not fabricate or guess Terragrunt block syntax, attributes, or built-in funct
 # Git operations
 When asked about PR descriptions, always wrap the full output in fenced markdown code block for an easy copy-paste.
 
+# Github Actions
+Before suggesting changes in actions versions, always check available versions online, do not rely on your memory as
+actions change fast.
+
 <!-- caveman-begin -->
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
 
