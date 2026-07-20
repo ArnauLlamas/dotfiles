@@ -1,5 +1,11 @@
 # Load completions
-autoload -U compinit && compinit
+# Load completions
+if [[ "$(uname)" == "Darwin" ]]; then
+  fpath=($(brew --prefix zsh)/share/zsh/functions $fpath)
+else
+  fpath=(/usr/share/zsh/${ZSH_VERSION}/functions $fpath)
+fi
+autoload -Uz compinit && compinit -i
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -98,7 +104,7 @@ zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
 # (Re)Load completions
-autoload -U compinit && compinit
+autoload -U compinit && compinit -i
 
 zinit cdreplay -q
 

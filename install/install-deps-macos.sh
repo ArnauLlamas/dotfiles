@@ -15,7 +15,6 @@ brew install docker-compose
 brew install trash
 brew install tree
 brew install jsonpp
-brew install jq
 brew install wget
 brew install git
 brew install neofetch
@@ -24,11 +23,10 @@ brew install eza
 brew install bat
 brew install ripgrep
 brew install vim
-brew install neovim
 brew install gsed
 
-brew install terraform
-brew install go
+# Note: jq, neovim, terraform, node, uv, tflint, trivy, terraform-docs, usage
+# are managed by mise (mise/config.toml). Do not add them here.
 
 echo "Done!"
 echo ""

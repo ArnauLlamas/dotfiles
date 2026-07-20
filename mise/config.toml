@@ -4,6 +4,7 @@ usage = "latest"
 
 neovim = "stable"
 opencode = "latest"
+"npm:@fission-ai/openspec" = "latest"
 
 terraform = "1"
 terragrunt = "1"
