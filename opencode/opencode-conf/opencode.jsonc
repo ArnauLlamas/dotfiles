@@ -4,6 +4,10 @@
   // Default model to use
   "model": "github-copilot/claude-sonnet-4.6",
 
+  "plugin": [
+    "./plugins/caveman/plugin.js"
+  ],
+
   // Lightweight model for tasks like title generation
   "small_model": "github-copilot/claude-haiku-4.5",
 
