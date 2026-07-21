@@ -1,11 +1,27 @@
-# Load completions
-# Load completions
+# Create static file completions so they are done only once and not each time a
+# new shell is spawned
+# Function to auto-generate completions if missing or tool updated
+_regen_completion() {
+  local cmd=$1 file=$2; shift 2
+  if (( $+commands[$cmd] )) && [[ ! -f $file || $(command -v $cmd) -nt $file ]]; then
+    $cmd "$@" > $file
+  fi
+}
+
+# Tools with completions not managed by package managers
+_regen_completion mise ~/.zsh/_mise completion zsh
+_regen_completion fzf ~/.zsh/_fzf --zsh
+unfunction _regen_completion
+
+# Adding new completions to fpath
+fpath=(~/.zsh $fpath)
+
+# Add system completions
 if [[ "$(uname)" == "Darwin" ]]; then
   fpath=($(brew --prefix zsh)/share/zsh/functions $fpath)
 else
   fpath=(/usr/share/zsh/${ZSH_VERSION}/functions $fpath)
 fi
-autoload -Uz compinit && compinit -i
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -29,8 +45,6 @@ export REPOS=$HOME/Documents/repos
 export PERSONAL=$HOME/Documents/personal
 
 export GOPATH="${HOME}/go"
-
-# export PATH=$PATH:$HOME/bin:/opt/homebrew/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$HOME/.fzf/bin:$GOPATH/bin:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
 
 # opencode
@@ -60,41 +74,6 @@ zinit snippet https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighti
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
-# Add in snippets
-if [[ "$(uname)" != "Darwin" ]]; then
-  setopt RE_MATCH_PCRE   # _fix-omz-plugin function uses this regex style
-
-  # Workaround for zinit issue#504: remove subversion dependency. Function clones all files in plugin
-  # directory (on github) that might be useful to zinit snippet directory. Should only be invoked
-  # via zinit atclone"_fix-omz-plugin"
-  _fix-omz-plugin() {
-    if [[ ! -f ._zinit/teleid ]] then return 0; fi
-    if [[ ! $(cat ._zinit/teleid) =~ "^OMZP::.*" ]] then return 0; fi
-    local OMZP_NAME=$(cat ._zinit/teleid | sed -n 's/OMZP:://p')
-    git clone --quiet --no-checkout --depth=1 --filter=tree:0 https://github.com/ohmyzsh/ohmyzsh
-    cd ohmyzsh
-    git sparse-checkout set --no-cone plugins/$OMZP_NAME
-    git checkout --quiet
-    cd ..
-    local OMZP_PATH="ohmyzsh/plugins/$OMZP_NAME"
-    local file
-    for file in $(ls -a ohmyzsh/plugins/$OMZP_NAME); do
-      if [[ $file == '.' ]] then continue; fi
-      if [[ $file == '..' ]] then continue; fi
-      if [[ $file == '.gitignore' ]] then continue; fi
-      if [[ $file == 'README.md' ]] then continue; fi
-      if [[ $file == "$OMZP_NAME.plugin.zsh" ]] then continue; fi
-      cp $OMZP_PATH/$file $file
-    done
-    rm -rf ohmyzsh
-  }
-
-  # zinit snippet atclone"_fix-omz-plugin" OMZP::gitfast
-  zinit wait lucid for atclone"_fix-omz-plugin" OMZP::gitfast
-else
-  zinit snippet OMZP::gitfast
-fi
-
 zinit snippet OMZP::aws
 zinit snippet OMZP::terraform
 zinit snippet OMZP::brew
@@ -103,10 +82,10 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
-# (Re)Load completions
+# Load completions
 autoload -U compinit && compinit -i
-
 zinit cdreplay -q
+typeset -aU fpath
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -147,10 +126,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Shell integrations
-source <(fzf --zsh)
 eval "$(mise activate zsh)"
-eval "$(mise completion zsh)"
-eval "$(opencode completion zsh)"
 
 # Custom sourcing
 source_if_exists $HOME/.env.sh
