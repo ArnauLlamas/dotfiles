@@ -2,11 +2,14 @@
 # Required for mise completions
 usage = "latest"
 
-neovim = "stable"
+neovim = "latest"
+tree-sitter = "latest"
+
 opencode = "latest"
 "npm:@fission-ai/openspec" = "latest"
 
 terraform = "1"
+terraform-docs = "latest"
 terragrunt = "1"
 tflint = "latest"
 trivy = "latest"

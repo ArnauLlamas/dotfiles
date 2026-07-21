@@ -4,6 +4,7 @@ require("catppuccin").setup({
 		comments = {},
 	},
 	integrations = {
+		blink_cmp = true,
 		mason = true,
 		which_key = true,
 		treesitter_context = true,

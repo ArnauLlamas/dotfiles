@@ -67,7 +67,7 @@ local opts = {
 	},
 	on_attach = function(client, bufnr)
 		-- Only attach to clients that support document formatting
-		if client.supports_method("textDocument/formatting") then
+		if client:supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({
 				group = get_augroup(client),
 				buffer = bufnr,
