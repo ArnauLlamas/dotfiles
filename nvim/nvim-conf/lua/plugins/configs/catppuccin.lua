@@ -5,6 +5,7 @@ require("catppuccin").setup({
 	},
 	integrations = {
 		blink_cmp = true,
+		dashboard = true,
 		mason = true,
 		which_key = true,
 		treesitter_context = true,
