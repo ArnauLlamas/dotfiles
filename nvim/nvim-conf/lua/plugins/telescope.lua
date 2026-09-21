@@ -21,6 +21,9 @@ return {
 				},
 			},
 			defaults = vim.tbl_extend("force", require("telescope.themes").get_ivy(), {
+				preview = {
+					treesitter = false,
+				},
 				path_display = {
 					truncate = 2,
 				},

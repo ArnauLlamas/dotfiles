@@ -8,6 +8,13 @@ _regen_completion() {
   fi
 }
 
+# Helper function
+source_if_exists () {
+  if test -r "$1"; then
+    source "$1"
+  fi
+}
+
 # Tools with completions not managed by package managers
 _regen_completion mise ~/.zsh/_mise completion zsh
 _regen_completion fzf ~/.zsh/_fzf --zsh
@@ -15,6 +22,9 @@ unfunction _regen_completion
 
 # Adding new completions to fpath
 fpath=(~/.zsh $fpath)
+
+# fzf key bindings + completion (fzf --zsh is not a #compdef file, must be sourced)
+source_if_exists ~/.zsh/_fzf
 
 # Add system completions
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -29,13 +39,6 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Helper function
-source_if_exists () {
-  if test -r "$1"; then
-    source "$1"
-  fi
-}
 
 # Custom variables
 export TERM="tmux-256color"

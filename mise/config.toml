@@ -1,6 +1,9 @@
+[settings]
+minimum_release_age = "7d"  # default is 24h
+
 [tools]
 # Required for mise completions
-usage = "latest"
+usage = "4.0.0"
 
 neovim = "latest"
 tree-sitter = "latest"
@@ -34,6 +37,7 @@ pre-commit = "4"
 gh = "2"
 gum = "0.17.0"
 difftastic = "latest"
+cmctl = "latest"
 
 [hooks]
 postinstall = '''
@@ -60,6 +64,3 @@ script = '''
 COMP_DIR="$HOME/.config/mise/completions"
 [[ -d "$COMP_DIR" ]] && fpath=("$COMP_DIR" $fpath) && autoload -Uz compinit && compinit -C
 '''
-
-[settings]
-experimental = true
