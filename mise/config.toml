@@ -39,20 +39,29 @@ gum = "0.17.0"
 difftastic = "latest"
 cmctl = "latest"
 
-[hooks]
-postinstall = '''
+fzf = "latest"
+fd = "latest"
+
+[hooks.postinstall]
+shell = "bash -c"
+run = '''
 #!/usr/bin/env bash
 set -euo pipefail
 COMP_DIR="$HOME/.config/mise/completions"
 mkdir -p "$COMP_DIR"
 
-echo "$MISE_INSTALLED_TOOLS" | jq -r '.[].name' | while read -r tool; do
+if [ "${MISE_INSTALLED_TOOLS:-[]}" != "[]" ] && [ -n "${MISE_INSTALLED_TOOLS:-}" ]; then
+  tools=$(echo "$MISE_INSTALLED_TOOLS" | jq -r '.[].name')
+else
+  tools=$(mise ls --json | jq -r 'keys[]')
+fi
+
+echo "$tools" | while read -r tool; do
   bin=$(mise which "$tool" 2>/dev/null) || continue
   outfile="$COMP_DIR/_${tool}"
-
-  if "$bin" completion zsh &>/dev/null 2>&1; then
+  if "$bin" completion zsh &>/dev/null; then
     "$bin" completion zsh > "$outfile" && echo "mise: wrote zsh completions for $tool"
-  elif "$bin" completions zsh &>/dev/null 2>&1; then
+  elif "$bin" completions zsh &>/dev/null; then
     "$bin" completions zsh > "$outfile" && echo "mise: wrote zsh completions for $tool"
   fi
 done

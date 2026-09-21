@@ -16,6 +16,7 @@ source_if_exists () {
 }
 
 # Tools with completions not managed by package managers
+mkdir -p ~/.zsh
 _regen_completion mise ~/.zsh/_mise completion zsh
 _regen_completion fzf ~/.zsh/_fzf --zsh
 unfunction _regen_completion
