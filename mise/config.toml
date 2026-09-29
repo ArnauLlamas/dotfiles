@@ -36,7 +36,7 @@ yq = "latest"
 pre-commit = "4"
 gh = "2"
 gum = "0.17.0"
-difftastic = "latest"
+delta = "latest"
 cmctl = "latest"
 
 fzf = "latest"

@@ -150,19 +150,13 @@ grev1 () {
 
   git show HEAD -- "$1" | git apply -R
 }
-gdnoext () {
-  if [[ "$1" == "" ]]; then
-    GD_PATH=":!*lock*"
-  else GD_PATH=$1
-  fi
-  git diff --no-ext-diff -- ${GD_PATH}
+gdplain () {
+  local GD_PATH="${1:-:!*lock*}"
+  git -c core.pager='less -R' -c color.ui=always diff --no-ext-diff -- ${GD_PATH}
 }
-gdsnoext () {
-  if [[ "$1" == "" ]]; then
-    GD_PATH=":!*lock*"
-  else GD_PATH=$1
-  fi
-  git diff --no-ext-diff --staged -- ${GD_PATH}
+gdsplain () {
+  local GD_PATH="${1:-:!*lock*}"
+  git -c core.pager='less -R' -c color.ui=always diff --no-ext-diff --staged -- ${GD_PATH}
 }
 gcfc () {
   git checkout $(git log --format=reference | fzf | awk '{ print $1 }')
