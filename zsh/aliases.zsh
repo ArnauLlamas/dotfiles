@@ -195,7 +195,7 @@ gwa () {
 gwf () {
   cd $(gwl | fzf | awk '{ print $1 }')
 }
-alias ssh-add-github-signing='ssh-add ~/.ssh/github-signing -t 43200' # 12h
+alias ssh-add-github-signing='ssh-add -t 43200 ~/.ssh/github-signing' # 12h
 alias cdg='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
 alias gb='git checkout'
 alias gbn='git checkout -b'
