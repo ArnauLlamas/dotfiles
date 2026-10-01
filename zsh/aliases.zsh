@@ -184,13 +184,14 @@ gwa () {
     WT_NAME=$1
   fi
 
-  if [[ "$2" == "" ]]; then
-    BRANCH=$(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")
-  else
-    BRANCH=$2
-  fi
+  WT_PATH="$REPOS/$(basename `git rev-parse --show-toplevel`)-$WT_NAME"
+  DEF_BRANCH=$(git remote show origin | grep HEAD | cut -d: -f2 | tr -d " ")
 
-  git worktree add "$REPOS/$(basename `git rev-parse --show-toplevel`)-$WT_NAME" "$BRANCH"
+  if [[ "$2" == "" ]]; then
+    git worktree add "$WT_PATH" "$DEF_BRANCH"
+  else
+    git worktree add -b "$2" "$WT_PATH" "$DEF_BRANCH"
+  fi
 }
 gwf () {
   cd $(gwl | fzf | awk '{ print $1 }')
