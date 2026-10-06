@@ -3,13 +3,12 @@ minimum_release_age = "7d"  # default is 24h
 
 [tools]
 # Required for mise completions
-usage = "4.0.0"
+usage = "6.12.0"
 
 neovim = "latest"
 tree-sitter = "latest"
 
 opencode = "latest"
-"npm:@fission-ai/openspec" = "latest"
 
 terraform = "1"
 terraform-docs = "latest"
@@ -17,15 +16,15 @@ terragrunt = "1"
 tflint = "latest"
 trivy = "latest"
 
-kind = "0.31.0"
+kind = "latest"
 kubectl = "latest"
 kubectx = "latest"
 kubens = "latest"
-helm = "3"
+helm = "4"
 
 rust = "1"
 golang = "1"
-nodejs = "24"
+node = ["24", "26"]
 
 pnpm = "latest"
 uv = "latest"
@@ -33,9 +32,9 @@ uv = "latest"
 jq = "latest"
 yq = "latest"
 
-pre-commit = "4"
+prek = "latest"
 gh = "2"
-gum = "0.17.0"
+gum = "latest"
 delta = "latest"
 cmctl = "latest"
 
