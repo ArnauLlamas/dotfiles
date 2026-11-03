@@ -4,10 +4,10 @@
   // Default model to use
   "model": "github-copilot/claude-sonnet-4.6",
 
-  "plugin": [ ],
+  "plugins": [ ],
 
   // Lightweight model for tasks like title generation
-  "small_model": "github-copilot/claude-haiku-4.5",
+  
 
   // Default agent: use plan (read-only planning) instead of build
   "default_agent": "plan",
@@ -16,20 +16,20 @@
   "autoupdate": true,
 
   // Keep snapshots enabled for undo/redo support
-  "snapshot": true,
+  "snapshots": true,
 
   // Disable session sharing
   "share": "disabled",
 
   // Require approval before running bash commands
-  "permission": {
-    "bash": "ask"
-  },
+  "permissions": [
+    { "action": "shell", "resource": "*", "effect": "ask" }
+  ],
 
   // Context compaction settings
   "compaction": {
     "auto": true,
-    "prune": true
+    "keep": { "tokens": 8000 }
   },
 
   // File watcher ignore patterns — explicit list to avoid accidentally ignoring too much
@@ -47,11 +47,11 @@
   // LM Studio must be running with a model loaded for these to work.
   // Model IDs must match exactly what LM Studio reports — update as needed.
   // Switch to a local model with /models inside OpenCode.
-  "provider": {
+  "providers": {
     "lmstudio": {
-      "npm": "@ai-sdk/openai-compatible",
+      "package": "aisdk:@ai-sdk/openai-compatible",
       "name": "LM Studio (local)",
-      "options": {
+      "settings": {
         "baseURL": "http://127.0.0.1:1234/v1"
       },
       "models": {
