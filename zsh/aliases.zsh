@@ -267,6 +267,7 @@ alias tms='tmux-sessionizer'
 # k8s aliases
 alias k='kubectl'
 alias pin='pods-in-node'
+alias kgetall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --ignore-not-found --show-kind'
 alias kx='kubectx'
 alias kn='kubens'
 
